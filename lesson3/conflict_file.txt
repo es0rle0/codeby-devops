@@ -1,1 +1,4 @@
+branch_c
 Conflict version from branch_c
+Conflict version from branch_b
+branch_b
