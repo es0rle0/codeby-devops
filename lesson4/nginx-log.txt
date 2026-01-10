@@ -1,0 +1,155 @@
+Script started on 2026-01-10 18:57:42+03:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="138" LINES="70"]
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msudo apt update[27m[C[C[C[Csudo apt update
+[?2004l[sudo] password for esorleo: 
+Sorry, try again.
+[sudo] password for esorleo: 
+[33m0% [Working][0m[33m0% [Waiting for headers][0m                        Hit:1 http://http.kali.org/kali kali-last-snapshot InRelease
+[33m                        0% [Working][0m[33m20% [Working][0m             Reading package lists... 0%Reading package lists... 0%Reading package lists... 0%Reading package lists... 97%Reading package lists... 97%Reading package lists... 98%Reading package lists... 98%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%                             Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%                                Reading state information... 0%Reading state information... 0%                                [1m375 packages can be upgraded. Run 'apt list --upgradable' to see them.
+[0m
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msudo apt install -y nginx[27m[C[C[C[Csudo apt install -y nginx
+[?2004lReading package lists... 0%Reading package lists... 100%                              Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%                                Reading state information... 0%Reading state information... 0%                                Installing:
+[32m  nginx
+[0m
+Installing dependencies:
+[32m  nginx-common
+[0m
+Suggested packages:
+  fcgiwrap  nginx-doc  ssl-cert
+
+Summary:
+  Upgrading: 0, Installing: 2, Removing: 0, Not Upgrading: 375
+  Download size: 782 kB
+  Space needed: 2,077 kB / 1,009 GB available
+
+[33m0% [Working][0m[33m0% [Working][0m[33m0% [Connecting to kali.download (104.17.254.239)][0m                                                 Get:1 http://kali.download/kali kali-last-snapshot/main amd64 nginx-common all 1.28.0-6 [110 kB]
+[33m                                                 3% [1 nginx-common 29.1 kB/110 kB 26%][0m[33m                                      21% [Working][0m             Get:2 http://kali.download/kali kali-last-snapshot/main amd64 nginx amd64 1.28.0-6 [672 kB]
+[33m23% [2 nginx 13.1 kB/672 kB 2%][0m[33m                               100% [Working][0m              Fetched 782 kB in 1s (824 kB/s)
+Preconfiguring packages ...
+
+7[0;69r8[1ASelecting previously unselected package nginx-common.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 47554 files and directories currently installed.)
+Preparing to unpack .../nginx-common_1.28.0-6_all.deb ...
+7[70;0f[42m[30mProgress: [  0%][49m[39m [                                                                                                                    ] 87[70;0f[42m[30mProgress: [ 11%][49m[39m [████████████▉                                                                                                       ] 8Unpacking nginx-common (1.28.0-6) ...
+7[70;0f[42m[30mProgress: [ 22%][49m[39m [█████████████████████████▊                                                                                          ] 8Selecting previously unselected package nginx.
+Preparing to unpack .../nginx_1.28.0-6_amd64.deb ...
+7[70;0f[42m[30mProgress: [ 33%][49m[39m [██████████████████████████████████████▋                                                                             ] 8Unpacking nginx (1.28.0-6) ...
+7[70;0f[42m[30mProgress: [ 44%][49m[39m [███████████████████████████████████████████████████▌                                                                ] 8Setting up nginx-common (1.28.0-6) ...
+7[70;0f[42m[30mProgress: [ 56%][49m[39m [████████████████████████████████████████████████████████████████▍                                                   ] 8update-rc.d: We have no instructions for the nginx init script.
+update-rc.d: It looks like a network service, we disable it.
+nginx.service is a disabled or a static unit, not starting it.
+7[70;0f[42m[30mProgress: [ 67%][49m[39m [█████████████████████████████████████████████████████████████████████████████▎                                      ] 8Setting up nginx (1.28.0-6) ...
+7[70;0f[42m[30mProgress: [ 78%][49m[39m [██████████████████████████████████████████████████████████████████████████████████████████▏                         ] 87[70;0f[42m[30mProgress: [ 89%][49m[39m [███████████████████████████████████████████████████████████████████████████████████████████████████████             ] 8
+7[0;70r8[1A[J
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7mnginx -v[27m[C[C[C[Cnginx -v
+[?2004lnginx version: nginx/1.28.0
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msudo systemctl stop nginx[27m[C[C[C[Csudo systemctl stop nginx
+[?2004l
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msudo systemctl disable nginx[27m[C[C[C[Csudo systemctl disable nginx
+[?2004lSynchronizing state of nginx.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install disable nginx
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msystemctl status nginx[27m[C[C[C[Csystemctl status nginx
+[?2004l[?1h=○ nginx.service - A high performance web server and a reverse proxy server[m
+     Loaded: loaded (]8;;file://es0rle0/usr/lib/systemd/system/nginx.service\/usr/lib/systemd/system/nginx.service]8;;\; [0;1;38:5:185mdisabled[0m; preset: [0;1;38:5:185mdisabled[0m)[m]8;;\
+     Active: inactive (dead)[m
+       Docs: ]8;;man:nginx(8)\man:nginx(8)]8;;\[m]8;;\
+[K[?1l>
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msudo nano /etc/systemd/system/custom-nginx.service[27m[C[C[C[Csudo nano /etc/systemd/system/custom-nginx.service
+[?2004l[?2004h[?1049h[22;0;0t[1;70r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[68;64H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 8.3                                     /etc/systemd/system/custom-nginx.service                                               [1;137H(B[m[69d(B[0;7m^G(B[m Help[69;18H(B[0;7m^O(B[m Write Out     (B[0;7m^F(B[m Where Is[52G(B[0;7m^K(B[m Cut[69;69H(B[0;7m^T(B[m Execute[86G(B[0;7m^C(B[m Location[103G(B[0;7mM-U(B[m Undo[69;120H(B[0;7mM-A(B[m Set Mark[70d(B[0;7m^X(B[m Exit[70;18H(B[0;7m^R(B[m Read File     (B[0;7m^\(B[m Replace[52G(B[0;7m^U(B[m Paste[70;69H(B[0;7m^J(B[m Justify[86G(B[0;7m^/(B[m Go To Line    (B[0;7mM-E(B[m Redo[70;120H(B[0;7mM-6(B[m Copy[2d[?12l[?25h[?25l[68d[K[1;93H(B[0;7m*[137G(B[m[2d(B[0;1m[32m[Unit][3d[39m(B[mDescription=Custom Nginx Web Server[4dAfter=network.target[6d(B[0;1m[32m[Service][7d[39m(B[mType=forking[8dExecStart=/usr/sbin/nginx[9dExecReload=/usr/sbin/nginx -s reload[10dExecStop=/usr/sbin/nginx -s quit[11dPIDFile=/run/nginx.pid[12dRestart=on-failure[14d(B[0;1m[32m[Install][15d[39m(B[mWantedBy=multi-user.target[16d[?12l[?25h[?25l[68d(B[0;7mSave modified buffer?                                                                                                                     [69;1H Y(B[m Yes[K[70d(B[0;7m N(B[m No  [70;17H(B[0;7m^C(B[m Cancel[K[68;23H[?12l[?25h[?25l[69d(B[0;7m^G(B[m Help[69;35H(B[0;7mM-D(B[m DOS Format[69;69H(B[0;7mM-A(B[m Append[69;103H(B[0;7mM-B(B[m Backup File[70d(B[0;7m^C(B[m Cancel[17G         [70;35H(B[0;7mM-M(B[m Mac Format[70;69H(B[0;7mM-P(B[m Prepend[70;103H(B[0;7m^T(B[m Browse[68d(B[0;7mFile Name to Write: /etc/systemd/system/custom-nginx.service(B[m[?12l[?25h[?25l [1K (B[0;7m[ Writing... ](B[m[K[1;93H(B[0;7m [137G(B[m[68;61H(B[0;7m[ Wrote 14 lines ](B[m[J[70d[?12l[?25h[70;1H[?1049l[23;0;0t[?1l>[?2004l
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m sudo nano /etc/systemd/system/custom-nginx.service[1P /etc/systemd/system/custom-nginx.service[1P /etc/systemd/system/custom-nginx.service[1P /etc/systemd/system/custom-nginx.service[1P /etc/systemd/system/custom-nginx.servicec /etc/systemd/system/custom-nginx.servicea /etc/systemd/system/custom-nginx.servicet /etc/systemd/system/custom-nginx.service
+[?2004l[Unit]
+Description=Custom Nginx Web Server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/nginx
+ExecReload=/usr/sbin/nginx -s reload
+ExecStop=/usr/sbin/nginx -s quit
+PIDFile=/run/nginx.pid
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msudo systemctl daemon-reexec[27m[C[C[C[Csudo systemctl daemon-reexec
+[?2004l
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msudo systemctl daemon-reload[27m[C[C[C[Csudo systemctl daemon-reload
+[?2004l
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msudo systemctl start custom-nginx[27m[C[C[C[Csudo systemctl start custom-nginx
+[?2004l
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msystemctl status custom-nginx[27m[C[C[C[Csystemctl status custom-nginx
+[?2004l[?1h=[0;1;32m●[0m custom-nginx.service - Custom Nginx Web Server[m
+     Loaded: loaded (]8;;file://es0rle0/etc/systemd/system/custom-nginx.service\/etc/systemd/system/custom-nginx.service]8;;\; [0;1;38:5:185mdisabled[0m; preset: [0;1;38:5:185mdisabled[0m)[m]8;;\
+     Active: [0;1;32mactive (running)[0m since Sat 2026-01-10 18:59:45 MSK; 4s ago[m
+ Invocation: b12ba10ea78d4fa39702e97f0d8adbfd[m
+    Process: 8006 ExecStart=/usr/sbin/nginx (code=exited, status=0/SUCCESS)[m
+   Main PID: 8007 (nginx)[m
+      Tasks: 33[0;38;5;245m (limit: 18996)[0m[m
+     Memory: 23.9M (peak: 25.2M)[m
+        CPU: 48ms[m
+     CGroup: /system.slice/custom-nginx.service[m
+             ├─[0;38;5;245m8007 "nginx: master process /usr/sbin/nginx"[0m[m
+             ├─[0;38;5;245m8008 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8009 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8010 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8011 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8012 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8014 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8015 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8016 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8017 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8018 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8019 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8020 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8021 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8022 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8023 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8024 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8025 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8026 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8027 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8028 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8029 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8030 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8031 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8032 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8033 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8034 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8035 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8036 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8037 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8038 "nginx: worker process"[0m[m
+             ├─[0;38;5;245m8039 "nginx: worker process"[0m[m
+             └─[0;38;5;245m8040 "nginx: worker process"[0m[m
+[K[?1l>
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msudo systemctl enable custom-nginx[27m[C[C[C[Csudo systemctl enable custom-nginx
+[?2004lCreated symlink '/etc/systemd/system/multi-user.target.wants/custom-nginx.service' → '/etc/systemd/system/custom-nginx.service'.
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msystemctl is-enabled custom-nginx[27m[C[C[C[Csystemctl is-enabled custom-nginx
+[?2004lenabled
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msystemctl is-enabled nginx[27m[C[C[C[Csystemctl is-enabled nginx
+[?2004ldisabled
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7mexit[27mexit
+[?2004lexit
+
+Script done on 2026-01-10 19:00:20+03:00 [COMMAND_EXIT_CODE="1"]
