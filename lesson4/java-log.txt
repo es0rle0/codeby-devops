@@ -1,0 +1,32 @@
+Script started on 2026-01-10 18:34:05+03:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="138" LINES="70"]
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7mjava -version[27m[C[C[C[Cjava -version
+[?2004lopenjdk version "17.0.17" 2025-10-21
+OpenJDK Runtime Environment Temurin-17.0.17+10 (build 17.0.17+10)
+OpenJDK 64-Bit Server VM Temurin-17.0.17+10 (build 17.0.17+10, mixed mode, sharing)
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7msudo update-alternatives --config java[27m[C[C[C[Csudo update-alternatives --config java
+[?2004l[sudo] password for esorleo: 
+There are 2 choices for the alternative java (providing /usr/bin/java).
+
+  Selection    Path                                         Priority   Status
+------------------------------------------------------------
+* 0            /opt/jdk-17.0.17+10/bin/java                  170       auto mode
+  1            /opt/jdk-17.0.17+10/bin/java                  170       manual mode
+  2            /usr/lib/jvm/java-11-openjdk-amd64/bin/java   110       manual mode
+
+Press <enter> to keep the current choice[*], or type selection number: 2
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/java to provide /usr/bin/java (java) in manual mode
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m sudo update-alternatives --config java[C[C[C[C[25Pjava -version
+[?2004lopenjdk version "11.0.25-ea" 2024-10-15
+OpenJDK Runtime Environment (build 11.0.25-ea+5-post-Debian-1)
+OpenJDK 64-Bit Server VM (build 11.0.25-ea+5-post-Debian-1, mixed mode, sharing)
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m exit
+[?2004lexit
+
+Script done on 2026-01-10 18:34:41+03:00 [COMMAND_EXIT_CODE="0"]
