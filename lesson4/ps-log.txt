@@ -1,0 +1,69 @@
+Script started on 2026-01-10 18:42:54+03:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="138" LINES="70"]
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7mps aux[27m[C[C[C[Cps aux
+[?2004lUSER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0  23152 13056 ?        Ss    2025   0:19 /usr/lib/systemd/systemd --system --deserialize=33
+root           2  0.0  0.0   3120  1792 ?        Sl    2025   0:00 /init
+root           6  0.0  0.0   3120  1792 ?        Sl    2025   0:00 plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log
+root          47  0.0  0.0  33248  9984 ?        Ss    2025   0:05 /usr/lib/systemd/systemd-udevd
+root         103  0.0  0.0   4276  2048 ?        Ss    2025   0:05 /usr/sbin/cron -f
+message+     111  0.0  0.0   7988  3584 ?        Ss    2025   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile -
+ollama       120  0.0  0.2 44524068 45084 ?      Ssl   2025   1:25 /usr/local/bin/ollama serve
+root         133  0.0  0.0  18568  7424 ?        Ss    2025   0:05 /usr/lib/systemd/systemd-logind
+root         218  0.0  0.0   5212  2304 hvc0     Ss+   2025   0:00 /sbin/agetty -o -- \u --noreset --noclear --keep-baud 115200,57600,3840
+root         219  0.0  0.0   5168  2304 tty1     Ss+   2025   0:00 /sbin/agetty -o -- \u --noreset --noclear - linux
+root         228  0.0  0.0   3128   768 ?        Ss    2025   0:00 /init
+root         229  0.0  0.0   3144   768 ?        S     2025   0:00 /init
+esorleo      230  0.0  0.0  10368  6912 pts/0    Ss+   2025   0:00 -bash
+root         231  0.0  0.0   7288  4096 ?        Ss    2025   0:00 login -- esorleo
+esorleo      241  0.0  0.0  21532 11776 ?        Ss    2025   0:00 /usr/lib/systemd/systemd --user --deserialize=8
+esorleo      243  0.0  0.0  22268  3340 ?        S     2025   0:00 (sd-pam)
+esorleo      255  0.0  0.0   6000  5120 pts/1    Ss+   2025   0:00 -bash
+esorleo      433  0.0  0.0  10932  3628 ?        Ss    2025   0:00 ssh-agent -s
+root        5830  0.0  0.0  12152  7936 ?        Ss   01:19   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+root        7201  0.0  0.0  50828 15872 ?        Ss   18:12   0:00 /usr/lib/systemd/systemd-journald
+root        7532  0.0  0.0   3128   768 ?        Ss   18:33   0:00 /init
+root        7534  0.0  0.0   3144  1024 ?        S    18:33   0:00 /init
+esorleo     7538  0.0  0.0   9060  5632 pts/2    Ss   18:33   0:00 -bash
+esorleo     7622  0.0  0.0   5580  2048 pts/2    S+   18:42   0:00 script ps-log.txt
+esorleo     7623  0.2  0.0   9008  5632 pts/3    Ss   18:42   0:00 bash -i
+esorleo     7627  0.0  0.0   9376  4096 pts/3    R+   18:42   0:00 ps aux
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7mps -u $(whoami)[27m[C[C[C[Cps -u $(whoami)
+[?2004l    PID TTY          TIME CMD
+    230 pts/0    00:00:00 bash
+    241 ?        00:00:00 systemd
+    243 ?        00:00:00 (sd-pam)
+    255 pts/1    00:00:00 bash
+    433 ?        00:00:00 ssh-agent
+   7538 pts/2    00:00:00 bash
+   7622 pts/2    00:00:00 script
+   7623 pts/3    00:00:00 bash
+   7629 pts/3    00:00:00 ps
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [7mtop &[27mtop &
+[?2004l[1] 7630
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m [?1l>[7mps aux | grep top[27m[C[C[C[Cps aux | grep top
+[?2004lesorleo     7630  0.0  0.0   8584  3328 pts/3    T    18:43   0:00 [01;31m[Ktop[m[K
+esorleo     7632  0.0  0.0   6604  1792 pts/3    S+   18:43   0:00 grep --color=auto [01;31m[Ktop[m[K
+
+[1]+  Stopped                 top
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m kill 7630
+[?2004l
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m exit
+[?2004lexit
+There are stopped jobs.
+
+[?2004h]0;esorleo@es0rle0: /mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m┌──([1;34mesorleo㉿es0rle0[;32m)-[[0;1m/mnt/c/Users/es0rle0h4ck/Desktop/Девопсёвое обучалово/codeby-devops/lesson4[;32m]
+[;32m└─[1;34m$[0m exit
+[?2004lexit
+[?1l>
+
+Script done on 2026-01-10 18:43:41+03:00 [COMMAND_EXIT_CODE="1"]
