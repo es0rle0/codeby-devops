@@ -1,0 +1,20 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/bookworm64"
+
+  # Общая настройка SSH (не обязательно, но удобно)
+  config.ssh.insert_key = false
+
+  config.vm.define "server" do |s|
+    s.vm.hostname = "server"
+    s.vm.network "private_network", ip: "192.168.56.10"
+    s.vm.provision "shell", path: "provision/common.sh"
+    s.vm.provision "shell", path: "provision/server.sh"
+  end
+
+  config.vm.define "client" do |c|
+    c.vm.hostname = "client"
+    c.vm.network "private_network", ip: "192.168.56.11"
+    c.vm.provision "shell", path: "provision/common.sh"
+    c.vm.provision "shell", path: "provision/client.sh"
+  end
+end
