@@ -48,3 +48,11 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+
+# Vagrant keys accidentally copied
+lesson12/vagrant/vagrant.key.*
+lesson12/vagrant/*.key
+
+# Vagrant keys accidentally copied
+lesson12/vagrant/vagrant.key.*
+lesson12/vagrant/*.key
