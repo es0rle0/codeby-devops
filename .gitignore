@@ -1,0 +1,50 @@
+# ---------------------------
+# Vagrant / VirtualBox
+# ---------------------------
+**/.vagrant/
+*.box
+
+# ---------------------------
+# Ansible: retry files, caches
+# ---------------------------
+*.retry
+**/.ansible/
+**/facts.d/
+**/*.log
+
+# ---------------------------
+# SSH keys / sensitive files
+# ---------------------------
+**/*.pem
+**/*.key
+**/*_key
+**/id_rsa
+**/id_rsa.pub
+**/id_ed25519
+**/id_ed25519.pub
+**/authorized_keys
+**/known_hosts
+**/ssh_config
+**/.ssh/
+
+# Allow non-sensitive public certs if you ever commit them
+!**/*.crt
+
+# ---------------------------
+# OS / Editor / temp files
+# ---------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+*~
+*.bak
+
+# ---------------------------
+# Python (если вдруг где-то появится)
+# ---------------------------
+__pycache__/
+*.pyc
+.venv/
+venv/
