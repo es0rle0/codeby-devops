@@ -1,0 +1,24 @@
+---
+- name: Setup web packages and nginx
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Show environment for this host
+      ansible.builtin.debug:
+        msg: "This host is in {{ env_name }} environment"
+
+    - name: Install packages wget, htop, nginx
+      ansible.builtin.apt:
+        name:
+          - wget
+          - htop
+          - nginx
+        state: present
+        update_cache: true
+
+    - name: Enable and start nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
