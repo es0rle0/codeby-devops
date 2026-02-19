@@ -1,0 +1,22 @@
+---
+# Пакеты/сервисы под разные семейства ОС
+mysql_packages_debian:
+  - mariadb-server
+  - python3-pymysql
+
+mysql_packages_redhat:
+  - mariadb-server
+  - python3-PyMySQL
+
+mysql_service_debian: mariadb
+mysql_service_redhat: mariadb
+
+# Пути к unix socket (для root socket auth)
+mysql_socket_debian: /run/mysqld/mysqld.sock
+mysql_socket_redhat: /var/lib/mysql/mysql.sock
+
+# Данные WordPress (как ты указала)
+wp_db_name: wordpress
+wp_db_user: wpuser
+wp_db_password: "wp!Tpass"
+wp_db_host: "localhost"

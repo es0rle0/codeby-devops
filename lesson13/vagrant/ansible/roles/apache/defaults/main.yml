@@ -1,0 +1,13 @@
+---
+apache_packages_debian:
+  - apache2
+
+apache_packages_redhat:
+  - httpd
+
+apache_service_debian: apache2
+apache_service_redhat: httpd
+
+# Простейшая страница (пока без WordPress)
+apache_docroot_debian: /var/www/html
+apache_docroot_redhat: /var/www/html

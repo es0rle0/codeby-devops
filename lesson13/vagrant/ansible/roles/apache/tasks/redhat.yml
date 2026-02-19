@@ -1,0 +1,25 @@
+---
+- name: Apache | Install packages (RedHat)
+  become: true
+  ansible.builtin.yum:
+    name: "{{ apache_packages_redhat }}"
+    state: present
+
+- name: Apache | Enable and start service (RedHat)
+  become: true
+  ansible.builtin.service:
+    name: "{{ apache_service_redhat }}"
+    state: started
+    enabled: true
+
+- name: Apache | Put test page
+  become: true
+  ansible.builtin.copy:
+    dest: "{{ apache_docroot_redhat }}/index.html"
+    content: |
+      <html>
+      <body>
+        <h1>Apache работает (RedHat)</h1>
+      </body>
+      </html>
+    mode: "0644"

@@ -1,0 +1,44 @@
+---
+# (опционально) EPEL для некоторых пакетов на RHEL-family
+# В Rocky/Alma обычно не требуется, но оставим безопасно.
+- name: MySQL | Ensure EPEL repo present (RedHat)
+  become: true
+  ansible.builtin.yum:
+    name: epel-release
+    state: present
+  when: ansible_facts['os_family'] | lower == 'redhat'
+  ignore_errors: true
+
+- name: MySQL | Install packages (RedHat)
+  become: true
+  ansible.builtin.yum:
+    name: "{{ mysql_packages_redhat }}"
+    state: present
+
+- name: MySQL | Enable and start service (RedHat)
+  become: true
+  ansible.builtin.service:
+    name: "{{ mysql_service_redhat }}"
+    state: started
+    enabled: true
+
+# Создать БД WordPress
+- name: MySQL | Create wordpress database (RedHat)
+  become: true
+  community.mysql.mysql_db:
+    name: "{{ wp_db_name }}"
+    state: present
+    login_user: root
+    login_unix_socket: "{{ mysql_socket_redhat }}"
+
+# Создать пользователя WordPress и выдать права
+- name: MySQL | Create wordpress user and grant privileges (RedHat)
+  become: true
+  community.mysql.mysql_user:
+    name: "{{ wp_db_user }}"
+    password: "{{ wp_db_password }}"
+    host: "{{ wp_db_host }}"
+    priv: "{{ wp_db_name }}.*:ALL"
+    state: present
+    login_user: root
+    login_unix_socket: "{{ mysql_socket_redhat }}"
