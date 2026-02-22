@@ -56,3 +56,8 @@ lesson12/vagrant/*.key
 # Vagrant keys accidentally copied
 lesson12/vagrant/vagrant.key.*
 lesson12/vagrant/*.key
+
+# Terraform
+**/.terraform/
+**/*.tfstate
+**/*.tfstate.*
