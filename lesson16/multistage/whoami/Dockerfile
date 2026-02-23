@@ -1,26 +1,13 @@
-FROM golang:1-alpine AS builder
-
-RUN apk --no-cache --no-progress add git ca-certificates tzdata make \
-    && update-ca-certificates \
-    && rm -rf /var/cache/apk/*
-
-WORKDIR /go/whoami
-
-# Download go modules
-COPY go.mod .
-COPY go.sum .
-RUN GO111MODULE=on GOPROXY=https://proxy.golang.org go mod download
-
+FROM golang:1.22-alpine AS build
+WORKDIR /src
+RUN apk add --no-cache git
 COPY . .
+RUN go mod download
+RUN CGO_ENABLED=0 GOOS=linux go build -trimpath -ldflags="-s -w" -o /out/whoami .
 
-RUN make build
-
-# Create a minimal container to run a Golang static binary
-FROM scratch
-
-COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
-COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
-COPY --from=builder /go/whoami/whoami .
-
-ENTRYPOINT ["/whoami"]
+FROM alpine:latest
+RUN adduser -D -u 10001 whoami
+COPY --from=build /out/whoami /usr/local/bin/whoami
 EXPOSE 80
+USER whoami
+ENTRYPOINT ["whoami"]
