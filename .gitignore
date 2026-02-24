@@ -56,3 +56,7 @@ lesson12/vagrant/*.key
 # Vagrant keys accidentally copied
 lesson12/vagrant/vagrant.key.*
 lesson12/vagrant/*.key
+
+# Lesson18 runtime data (do not commit)
+lesson18/data/
+lesson18/.env
