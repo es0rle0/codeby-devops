@@ -1,0 +1,26 @@
+---
+- name: Apache | Install packages (Debian)
+  become: true
+  ansible.builtin.apt:
+    name: "{{ apache_packages_debian }}"
+    state: present
+    update_cache: true
+
+- name: Apache | Enable and start service (Debian)
+  become: true
+  ansible.builtin.service:
+    name: "{{ apache_service_debian }}"
+    state: started
+    enabled: true
+
+- name: Apache | Put test page
+  become: true
+  ansible.builtin.copy:
+    dest: "{{ apache_docroot_debian }}/index.html"
+    content: |
+      <html>
+      <body>
+        <h1>Apache работает (Debian)</h1>
+      </body>
+      </html>
+    mode: "0644"

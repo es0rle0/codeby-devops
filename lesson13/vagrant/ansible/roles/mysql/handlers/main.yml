@@ -1,0 +1,6 @@
+---
+- name: Restart mysql
+  become: true
+  ansible.builtin.service:
+    name: "{{ (ansible_facts['os_family'] | lower == 'debian') | ternary(mysql_service_debian, mysql_service_redhat) }}"
+    state: restarted

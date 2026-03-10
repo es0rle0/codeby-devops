@@ -5,12 +5,29 @@
 *.box
 
 # ---------------------------
+# Terraform
+# ---------------------------
+**/.terraform/
+**/*.tfstate
+**/*.tfstate.*
+**/crash.log
+
+# ---------------------------
 # Ansible: retry files, caches
 # ---------------------------
 *.retry
 **/.ansible/
 **/facts.d/
 **/*.log
+
+# Allow Lesson17 script log (task requirement)
+!lesson17/script.log
+
+# ---------------------------
+# Lesson18 runtime data (do not commit)
+# ---------------------------
+lesson18/data/
+lesson18/.env
 
 # ---------------------------
 # SSH keys / sensitive files
@@ -52,11 +69,3 @@ venv/
 # Vagrant keys accidentally copied
 lesson12/vagrant/vagrant.key.*
 lesson12/vagrant/*.key
-
-# Vagrant keys accidentally copied
-lesson12/vagrant/vagrant.key.*
-lesson12/vagrant/*.key
-
-# Lesson18 runtime data (do not commit)
-lesson18/data/
-lesson18/.env
