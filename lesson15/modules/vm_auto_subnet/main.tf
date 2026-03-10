@@ -7,28 +7,13 @@ terraform {
   }
 }
 
-data "yandex_vpc_network" "this" {
-  network_id = var.network_id
-  name       = var.network_name
-  folder_id  = var.folder_id
-}
-
-data "yandex_vpc_subnet" "subnets" {
-  for_each  = toset(data.yandex_vpc_network.this.subnet_ids)
-  subnet_id = each.value
+data "yandex_compute_image" "ubuntu" {
+  family = "ubuntu-2204-lts"
 }
 
 locals {
-  subnets_in_zone = [
-    for s in values(data.yandex_vpc_subnet.subnets) : s.id
-    if s.zone == var.zone
-  ]
-
+  subnets_in_zone    = lookup(var.subnet_ids_by_zone, var.zone, [])
   selected_subnet_id = try(local.subnets_in_zone[0], null)
-}
-
-data "yandex_compute_image" "ubuntu" {
-  family = "ubuntu-2204-lts"
 }
 
 resource "yandex_compute_instance" "this" {
@@ -62,7 +47,7 @@ resource "yandex_compute_instance" "this" {
   lifecycle {
     precondition {
       condition     = local.selected_subnet_id != null
-      error_message = "No subnet found in VPC for zone '${var.zone}'. Choose another zone or create a subnet in that zone."
+      error_message = "No subnet found for zone '${var.zone}'. Pass subnets_by_zone from data module and ensure subnet exists in that zone."
     }
   }
 }

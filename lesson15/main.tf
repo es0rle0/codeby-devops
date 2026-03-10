@@ -24,12 +24,14 @@ module "subnets_data" {
 
 # VM is created in the provided zone; subnet is auto-selected by zone
 module "vm" {
-  source              = "./modules/vm_auto_subnet"
-  network_name        = var.vpc_name
-  folder_id           = var.yc_folder_id
-  zone                = var.vm_zone
-  name                = var.vm_name
+  source = "./modules/vm_auto_subnet"
+
+  zone               = var.vm_zone
+  name               = var.vm_name
+  subnet_ids_by_zone = module.subnets_data.subnet_ids_by_zone
+
   nat                 = var.vm_nat
   ssh_user            = var.ssh_user
   ssh_public_key_path = var.ssh_public_key_path
 }
+

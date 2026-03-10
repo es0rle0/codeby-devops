@@ -1,21 +1,3 @@
-variable "network_id" {
-  type        = string
-  description = "VPC network id"
-  default     = null
-}
-
-variable "network_name" {
-  type        = string
-  description = "VPC network name (alternative to network_id)"
-  default     = null
-}
-
-variable "folder_id" {
-  type        = string
-  description = "Folder id (optional)"
-  default     = null
-}
-
 variable "zone" {
   type        = string
   description = "Target zone, e.g. ru-central1-a"
@@ -24,6 +6,11 @@ variable "zone" {
 variable "name" {
   type        = string
   description = "VM name"
+}
+
+variable "subnet_ids_by_zone" {
+  type        = map(list(string))
+  description = "Subnet IDs grouped by zone (from data-only module)"
 }
 
 variable "cores" {
