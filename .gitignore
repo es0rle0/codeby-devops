@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+
+# Vagrant state (must not be committed)
+lesson13/vagrant/.vagrant/
+
+# Terraform
+**/.terraform/
+**/*.tfstate
+**/*.tfstate.*
+**/crash.log
+=======
 # ---------------------------
 # Vagrant / VirtualBox
 # ---------------------------
@@ -56,3 +67,4 @@ lesson12/vagrant/*.key
 # Vagrant keys accidentally copied
 lesson12/vagrant/vagrant.key.*
 lesson12/vagrant/*.key
+>>>>>>> origin/main
