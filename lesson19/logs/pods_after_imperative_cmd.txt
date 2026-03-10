@@ -1,0 +1,2 @@
+NAME            READY   STATUS              RESTARTS   AGE   IP       NODE       NOMINATED NODE   READINESS GATES
+nginx-imp-cmd   0/1     ContainerCreating   0          6s    <none>   minikube   <none>           <none>

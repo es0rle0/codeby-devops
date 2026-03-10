@@ -1,0 +1,4 @@
+NAME                READY   STATUS    RESTARTS   AGE    IP           NODE       NOMINATED NODE   READINESS GATES
+nginx-declarative   1/1     Running   0          6s     10.244.0.5   minikube   <none>           <none>
+nginx-imp-cmd       1/1     Running   0          120m   10.244.0.3   minikube   <none>           <none>
+nginx-imp-config    1/1     Running   0          41s    10.244.0.4   minikube   <none>           <none>
