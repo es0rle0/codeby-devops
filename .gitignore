@@ -67,4 +67,10 @@ lesson12/vagrant/*.key
 # Vagrant keys accidentally copied
 lesson12/vagrant/vagrant.key.*
 lesson12/vagrant/*.key
+<<<<<<< HEAD
+
+# Allow Lesson17 script log
+!lesson17/script.log
+=======
+>>>>>>> origin/main
 >>>>>>> origin/main
