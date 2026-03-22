@@ -1,0 +1,2 @@
+NAME            REFERENCE              TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+wordpress-hpa   Deployment/wordpress   cpu: 496%/50%   1         5         5          2d1h
