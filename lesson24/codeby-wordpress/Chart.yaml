@@ -1,0 +1,6 @@
+apiVersion: v2
+name: codeby-wordpress
+description: WordPress + MySQL (StatefulSet) with PV/PVC, NetworkPolicy, HPA, Ingress
+type: application
+version: 0.1.0
+appVersion: "latest"
