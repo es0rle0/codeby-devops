@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wp-diag
+  namespace: dev
+spec:
+  serviceAccountName: wp-diag-sa
+  restartPolicy: Never
+  containers:
+    - name: diag
+      image: bitnami/kubectl:latest
+      command: ["sh", "-c"]
+      args:
+        - |
+          echo "=== Discovered WordPress pods in namespace dev ==="
+          kubectl -n dev get pods -l app=wordpress -o wide
+          echo "=== Done ==="
+          sleep 3600

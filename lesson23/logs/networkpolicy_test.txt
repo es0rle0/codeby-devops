@@ -1,0 +1,3 @@
+nc: mysql (10.96.57.41:3306): Connection timed out
+MYSQL BLOCKED
+pod "np-test" deleted from dev namespace
