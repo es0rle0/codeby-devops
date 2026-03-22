@@ -5,3 +5,6 @@ wordpress-hpa   Deployment/wordpress   cpu: 496%/50%   1         5         4    
 wordpress-hpa   Deployment/wordpress   cpu: 496%/50%   1         5         5          2d1h
 wordpress-hpa   Deployment/wordpress   cpu: 192%/50%   1         5         5          2d1h
 wordpress-hpa   Deployment/wordpress   cpu: 1%/50%     1         5         5          2d1h
+wordpress-hpa   Deployment/wordpress   cpu: 1%/50%     1         5         5          2d1h
+wordpress-hpa   Deployment/wordpress   cpu: 1%/50%     1         5         5          2d1h
+wordpress-hpa   Deployment/wordpress   cpu: 1%/50%     1         5         1          2d1h
