@@ -1,111 +1,67 @@
 pipeline {
-  agent none
+  agent { label 'maven' }
 
   options {
     timestamps()
-    // чтобы при падении одного параллельного блока остальные тоже останавливались
     parallelsAlwaysFailFast()
   }
 
-  environment {
-    BUILD_ALL = 'false'
-    BUILD_HW  = 'false' // hello-world
-    BUILD_HJ  = 'false' // hello-jenkins
-    BUILD_HD  = 'false' // hello-devops
-  }
-
   stages {
-    stage('Checkout + Detect changes') {
-      agent { label 'maven' }
-      steps {
-        checkout scm
-        script {
-          def changed = []
-
-          // currentBuild.changeSets работает в multibranch и содержит изменённые файлы
-          for (cs in currentBuild.changeSets) {
-            for (entry in cs.items) {
-              for (f in entry.affectedFiles) {
-                changed << f.path
-              }
-            }
-          }
-          changed = changed.unique()
-
-          echo "Changed files:\n" + (changed ? changed.join("\n") : "(none)")
-
-          // Первый билд может быть без changeSets -> тогда соберём всё
-          if (changed.isEmpty()) {
-            env.BUILD_ALL = 'true'
-            echo "No changes detected (first build). Build ALL apps."
-          } else {
-            env.BUILD_HW = (changed.any { it.startsWith('lesson26/apps/hello-world/') } ? 'true' : 'false')
-            env.BUILD_HJ = (changed.any { it.startsWith('lesson26/apps/hello-jenkins/') } ? 'true' : 'false')
-            env.BUILD_HD = (changed.any { it.startsWith('lesson26/apps/hello-devops/') } ? 'true' : 'false')
-          }
-
-          echo "Flags: BUILD_ALL=${env.BUILD_ALL}, HW=${env.BUILD_HW}, HJ=${env.BUILD_HJ}, HD=${env.BUILD_HD}"
-        }
-      }
+    stage('Checkout') {
+      steps { checkout scm }
     }
 
     stage('Build/Test/Deploy (parallel)') {
       parallel {
         stage('hello-world') {
-          when { expression { env.BUILD_ALL == 'true' || env.BUILD_HW == 'true' } }
-          agent { label 'maven' }
+          when {
+            anyOf {
+              changeset "lesson26/apps/hello-world/**"
+              expression { return currentBuild.previousBuild == null }
+            }
+          }
           stages {
-            stage('Build') {
-              steps { sh 'mvn -B -f lesson26/apps/hello-world/pom.xml clean package' }
-            }
-            stage('Test') {
-              steps { sh 'mvn -B -f lesson26/apps/hello-world/pom.xml test' }
-            }
+            stage('Build') { steps { sh 'mvn -B -f lesson26/apps/hello-world/pom.xml clean package' } }
+            stage('Test')  { steps { sh 'mvn -B -f lesson26/apps/hello-world/pom.xml test' } }
             stage('Deploy (run)') {
               steps {
-                sh '''
-                  java -jar lesson26/apps/hello-world/target/hello-world-1.0.0.jar | tee lesson26/apps/hello-world/deploy.log
-                '''
+                sh 'java -jar lesson26/apps/hello-world/target/hello-world-1.0.0.jar | tee lesson26/apps/hello-world/deploy.log'
               }
             }
           }
         }
 
         stage('hello-jenkins') {
-          when { expression { env.BUILD_ALL == 'true' || env.BUILD_HJ == 'true' } }
-          agent { label 'maven' }
+          when {
+            anyOf {
+              changeset "lesson26/apps/hello-jenkins/**"
+              expression { return currentBuild.previousBuild == null }
+            }
+          }
           stages {
-            stage('Build') {
-              steps { sh 'mvn -B -f lesson26/apps/hello-jenkins/pom.xml clean package' }
-            }
-            stage('Test') {
-              steps { sh 'mvn -B -f lesson26/apps/hello-jenkins/pom.xml test' }
-            }
+            stage('Build') { steps { sh 'mvn -B -f lesson26/apps/hello-jenkins/pom.xml clean package' } }
+            stage('Test')  { steps { sh 'mvn -B -f lesson26/apps/hello-jenkins/pom.xml test' } }
             stage('Deploy (run)') {
               steps {
-                sh '''
-                  java -jar lesson26/apps/hello-jenkins/target/hello-jenkins-1.0.0.jar | tee lesson26/apps/hello-jenkins/deploy.log
-                '''
+                sh 'java -jar lesson26/apps/hello-jenkins/target/hello-jenkins-1.0.0.jar | tee lesson26/apps/hello-jenkins/deploy.log'
               }
             }
           }
         }
 
         stage('hello-devops') {
-          when { expression { env.BUILD_ALL == 'true' || env.BUILD_HD == 'true' } }
-          agent { label 'maven' }
+          when {
+            anyOf {
+              changeset "lesson26/apps/hello-devops/**"
+              expression { return currentBuild.previousBuild == null }
+            }
+          }
           stages {
-            stage('Build') {
-              steps { sh 'mvn -B -f lesson26/apps/hello-devops/pom.xml clean package' }
-            }
-            stage('Test') {
-              steps { sh 'mvn -B -f lesson26/apps/hello-devops/pom.xml test' }
-            }
+            stage('Build') { steps { sh 'mvn -B -f lesson26/apps/hello-devops/pom.xml clean package' } }
+            stage('Test')  { steps { sh 'mvn -B -f lesson26/apps/hello-devops/pom.xml test' } }
             stage('Deploy (run)') {
               steps {
-                sh '''
-                  java -jar lesson26/apps/hello-devops/target/hello-devops-1.0.0.jar | tee lesson26/apps/hello-devops/deploy.log
-                '''
+                sh 'java -jar lesson26/apps/hello-devops/target/hello-devops-1.0.0.jar | tee lesson26/apps/hello-devops/deploy.log'
               }
             }
           }
@@ -116,7 +72,6 @@ pipeline {
 
   post {
     always {
-      // jar + deploy.log, чтобы было видно “деплой (запуск)” как артефакт лога
       archiveArtifacts allowEmptyArchive: true, artifacts: 'lesson26/apps/**/target/*.jar, lesson26/apps/**/deploy.log'
       junit allowEmptyResults: true, testResults: 'lesson26/apps/**/target/surefire-reports/*.xml'
     }
