@@ -1,0 +1,18 @@
+{{- if .Values.mysql.persistence.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "codebywp.mysql.fullname" . }}-pvc
+  namespace: {{ .Values.global.namespace | default .Release.Namespace }}
+  labels:
+{{ include "codebywp.labels" . | indent 4 }}
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: {{ .Values.mysql.persistence.size }}
+  storageClassName: {{ .Values.mysql.persistence.storageClass }}
+  {{- if .Values.mysql.persistence.pv.enabled }}
+  volumeName: {{ include "codebywp.mysql.fullname" . }}-pv
+  {{- end }}
+{{- end }}

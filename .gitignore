@@ -72,3 +72,4 @@ lesson12/vagrant/*.key
 
 # Lesson20 local secrets (do not commit)
 lesson20/manifests/01-secret-wp.yaml
+values.private.yaml

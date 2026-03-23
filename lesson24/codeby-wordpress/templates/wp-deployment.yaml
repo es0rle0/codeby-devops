@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "codebywp.wp.fullname" . }}
+  namespace: {{ .Values.global.namespace | default .Release.Namespace }}
+  labels:
+{{ include "codebywp.labels" . | indent 4 }}
+spec:
+  replicas: {{ .Values.wordpress.deployment.replicaCount }}
+  selector:
+    matchLabels:
+      app: wordpress
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/name: {{ include "codebywp.name" . }}
+    spec:
+      containers:
+        - name: wordpress
+          image: {{ .Values.wordpress.image | quote }}
+          ports:
+            - containerPort: 80
+          env:
+            - name: WORDPRESS_DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "codebywp.fullname" . }}-config
+                  key: WORDPRESS_DB_HOST
+            - name: WORDPRESS_DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "codebywp.fullname" . }}-config
+                  key: WORDPRESS_DB_NAME
+            - name: WORDPRESS_DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "codebywp.fullname" . }}-config
+                  key: WORDPRESS_DB_USER
+            - name: WORDPRESS_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "codebywp.secretName" . }}
+                  key: mysql-password
+          resources:
+{{ toYaml .Values.wordpress.deployment.resources | indent 12 }}
+          volumeMounts:
+            - name: wp-data
+              mountPath: /var/www/html
+      volumes:
+        - name: wp-data
+          persistentVolumeClaim:
+            claimName: {{ include "codebywp.wp.fullname" . }}-pvc

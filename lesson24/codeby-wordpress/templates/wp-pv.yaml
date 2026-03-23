@@ -1,0 +1,25 @@
+{{- if and .Values.wordpress.persistence.enabled .Values.wordpress.persistence.pv.enabled }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "codebywp.wp.fullname" . }}-pv
+  labels:
+{{ include "codebywp.labels" . | indent 4 }}
+spec:
+  capacity:
+    storage: {{ .Values.wordpress.persistence.size }}
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: {{ .Values.wordpress.persistence.pv.reclaimPolicy }}
+  storageClassName: {{ .Values.wordpress.persistence.storageClass }}
+  hostPath:
+    path: {{ .Values.wordpress.persistence.pv.hostPath | quote }}
+  {{- if .Values.wordpress.persistence.pv.nodeName }}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values: [{{ .Values.wordpress.persistence.pv.nodeName | quote }}]
+  {{- end }}
+{{- end }}
