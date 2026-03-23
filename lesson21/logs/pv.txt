@@ -1,0 +1,3 @@
+NAME           CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM               STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
+pv-mysql       1Gi        RWO            Retain           Bound    dev/mysql-pvc       local-sc       <unset>                          13m
+pv-wordpress   1Gi        RWO            Retain           Bound    dev/wordpress-pvc   local-sc       <unset>                          13m
