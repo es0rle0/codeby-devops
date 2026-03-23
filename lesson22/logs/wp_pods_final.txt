@@ -1,0 +1,6 @@
+NAME                        READY   STATUS    RESTARTS   AGE    IP            NODE       NOMINATED NODE   READINESS GATES
+wordpress-c8df696c6-2fmgw   1/1     Running   0          49s    10.244.0.21   minikube   <none>           <none>
+wordpress-c8df696c6-79scw   1/1     Running   0          34s    10.244.0.22   minikube   <none>           <none>
+wordpress-c8df696c6-bf64z   1/1     Running   0          2d1h   10.244.0.18   minikube   <none>           <none>
+wordpress-c8df696c6-hshvb   1/1     Running   0          49s    10.244.0.19   minikube   <none>           <none>
+wordpress-c8df696c6-pp7gb   1/1     Running   0          49s    10.244.0.20   minikube   <none>           <none>
