@@ -70,6 +70,15 @@ venv/
 lesson12/vagrant/vagrant.key.*
 lesson12/vagrant/*.key
 
+# Vagrant keys accidentally copied
+lesson12/vagrant/vagrant.key.*
+lesson12/vagrant/*.key
+
+# Terraform
+**/.terraform/
+**/*.tfstate
+**/*.tfstate.*
 # Lesson20 local secrets (do not commit)
 lesson20/manifests/01-secret-wp.yaml
 values.private.yaml
+origin/main
