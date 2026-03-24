@@ -21,6 +21,7 @@ pipeline {
         stage('hello-world') {
           when {
             anyOf {
+              expression { env.BRANCH_NAME == 'lesson27' }
               changeset "lesson26/apps/hello-world/**"
               expression { return currentBuild.previousBuild == null }
             }
@@ -60,6 +61,7 @@ pipeline {
         stage('hello-jenkins') {
           when {
             anyOf {
+              expression { env.BRANCH_NAME == 'lesson27' }    
               changeset "lesson26/apps/hello-jenkins/**"
               expression { return currentBuild.previousBuild == null }
             }
@@ -99,6 +101,7 @@ pipeline {
         stage('hello-devops') {
           when {
             anyOf {
+              expression { env.BRANCH_NAME == 'lesson27' }
               changeset "lesson26/apps/hello-devops/**"
               expression { return currentBuild.previousBuild == null }
             }
