@@ -1,0 +1,148 @@
+pipeline {
+  agent { label 'maven' }
+
+  options {
+    timestamps()
+    parallelsAlwaysFailFast()
+  }
+
+  environment {
+    SONAR_SERVER = 'SonarQube'
+  }
+
+  stages {
+    stage('Checkout') {
+      steps { checkout scm }
+    }
+
+    stage('Build/Test/Deploy (parallel)') {
+      parallel {
+
+        stage('hello-world') {
+          when {
+            anyOf {
+              changeset "lesson26/apps/hello-world/**"
+              expression { return currentBuild.previousBuild == null }
+            }
+          }
+          stages {
+            stage('Build') { steps { sh 'mvn -B -f lesson26/apps/hello-world/pom.xml clean package' } }
+            stage('Test')  { steps { sh 'mvn -B -f lesson26/apps/hello-world/pom.xml test' } }
+
+            stage('SonarQube Analyze') {
+              steps {
+                withSonarQubeEnv("${SONAR_SERVER}") {
+                  sh '''
+                    mvn -B -f lesson26/apps/hello-world/pom.xml sonar:sonar \
+                      -Dsonar.projectKey=codeby-hello-world \
+                      -Dsonar.projectName="Hello World"
+                  '''
+                }
+              }
+            }
+
+            stage('Quality Gate') {
+              steps {
+                timeout(time: 10, unit: 'MINUTES') {
+                  waitForQualityGate abortPipeline: true
+                }
+              }
+            }
+
+            stage('Deploy (run)') {
+              steps {
+                sh 'java -jar lesson26/apps/hello-world/target/hello-world-1.0.0.jar | tee lesson26/apps/hello-world/deploy.log'
+              }
+            }
+          }
+        }
+
+        stage('hello-jenkins') {
+          when {
+            anyOf {
+              changeset "lesson26/apps/hello-jenkins/**"
+              expression { return currentBuild.previousBuild == null }
+            }
+          }
+          stages {
+            stage('Build') { steps { sh 'mvn -B -f lesson26/apps/hello-jenkins/pom.xml clean package' } }
+            stage('Test')  { steps { sh 'mvn -B -f lesson26/apps/hello-jenkins/pom.xml test' } }
+
+            stage('SonarQube Analyze') {
+              steps {
+                withSonarQubeEnv("${SONAR_SERVER}") {
+                  sh '''
+                    mvn -B -f lesson26/apps/hello-jenkins/pom.xml sonar:sonar \
+                      -Dsonar.projectKey=codeby-hello-jenkins \
+                      -Dsonar.projectName="Hello Jenkins"
+                  '''
+                }
+              }
+            }
+
+            stage('Quality Gate') {
+              steps {
+                timeout(time: 10, unit: 'MINUTES') {
+                  waitForQualityGate abortPipeline: true
+                }
+              }
+            }
+
+            stage('Deploy (run)') {
+              steps {
+                sh 'java -jar lesson26/apps/hello-jenkins/target/hello-jenkins-1.0.0.jar | tee lesson26/apps/hello-jenkins/deploy.log'
+              }
+            }
+          }
+        }
+
+        stage('hello-devops') {
+          when {
+            anyOf {
+              changeset "lesson26/apps/hello-devops/**"
+              expression { return currentBuild.previousBuild == null }
+            }
+          }
+          stages {
+            stage('Build') { steps { sh 'mvn -B -f lesson26/apps/hello-devops/pom.xml clean package' } }
+            stage('Test')  { steps { sh 'mvn -B -f lesson26/apps/hello-devops/pom.xml test' } }
+
+            stage('SonarQube Analyze') {
+              steps {
+                withSonarQubeEnv("${SONAR_SERVER}") {
+                  sh '''
+                    mvn -B -f lesson26/apps/hello-devops/pom.xml sonar:sonar \
+                      -Dsonar.projectKey=codeby-hello-devops \
+                      -Dsonar.projectName="Hello Devops"
+                  '''
+                }
+              }
+            }
+
+            stage('Quality Gate') {
+              steps {
+                timeout(time: 10, unit: 'MINUTES') {
+                  waitForQualityGate abortPipeline: true
+                }
+              }
+            }
+
+            stage('Deploy (run)') {
+              steps {
+                sh 'java -jar lesson26/apps/hello-devops/target/hello-devops-1.0.0.jar | tee lesson26/apps/hello-devops/deploy.log'
+              }
+            }
+          }
+        }
+
+      } // parallel
+    }
+  }
+
+  post {
+    always {
+      archiveArtifacts allowEmptyArchive: true, artifacts: 'lesson26/apps/**/target/*.jar, lesson26/apps/**/deploy.log'
+      junit allowEmptyResults: true, testResults: 'lesson26/apps/**/target/surefire-reports/*.xml'
+    }
+  }
+}
