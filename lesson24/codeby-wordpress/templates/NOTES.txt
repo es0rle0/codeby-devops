@@ -1,0 +1,14 @@
+Спасибо за установку {{ .Chart.Name }}.
+Релиз: {{ .Release.Name }}
+Namespace: {{ .Release.Namespace }}
+
+WordPress Service:
+  {{ include "codebywp.wp.fullname" . }}
+
+Ingress:
+  Host: {{ .Values.ingress.host }}
+  Path: {{ .Values.ingress.path }}
+
+Подсказки:
+- Посмотреть манифесты: helm get manifest {{ .Release.Name }}
+- Посмотреть значения:  helm get values {{ .Release.Name }}

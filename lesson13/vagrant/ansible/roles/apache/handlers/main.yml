@@ -1,0 +1,6 @@
+---
+- name: Restart apache
+  become: true
+  ansible.builtin.service:
+    name: "{{ (ansible_facts['os_family'] | lower == 'debian') | ternary(apache_service_debian, apache_service_redhat) }}"
+    state: restarted

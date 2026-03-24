@@ -5,12 +5,29 @@
 *.box
 
 # ---------------------------
+# Terraform
+# ---------------------------
+**/.terraform/
+**/*.tfstate
+**/*.tfstate.*
+**/crash.log
+
+# ---------------------------
 # Ansible: retry files, caches
 # ---------------------------
 *.retry
 **/.ansible/
 **/facts.d/
 **/*.log
+
+# Allow Lesson17 script log (task requirement)
+!lesson17/script.log
+
+# ---------------------------
+# Lesson18 runtime data (do not commit)
+# ---------------------------
+lesson18/data/
+lesson18/.env
 
 # ---------------------------
 # SSH keys / sensitive files
@@ -61,3 +78,7 @@ lesson12/vagrant/*.key
 **/.terraform/
 **/*.tfstate
 **/*.tfstate.*
+# Lesson20 local secrets (do not commit)
+lesson20/manifests/01-secret-wp.yaml
+values.private.yaml
+origin/main

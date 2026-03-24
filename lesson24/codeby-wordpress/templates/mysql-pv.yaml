@@ -1,0 +1,25 @@
+{{- if and .Values.mysql.persistence.enabled .Values.mysql.persistence.pv.enabled }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "codebywp.mysql.fullname" . }}-pv
+  labels:
+{{ include "codebywp.labels" . | indent 4 }}
+spec:
+  capacity:
+    storage: {{ .Values.mysql.persistence.size }}
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: {{ .Values.mysql.persistence.pv.reclaimPolicy }}
+  storageClassName: {{ .Values.mysql.persistence.storageClass }}
+  hostPath:
+    path: {{ .Values.mysql.persistence.pv.hostPath | quote }}
+  {{- if .Values.mysql.persistence.pv.nodeName }}
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values: [{{ .Values.mysql.persistence.pv.nodeName | quote }}]
+  {{- end }}
+{{- end }}

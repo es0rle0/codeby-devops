@@ -1,0 +1,79 @@
+nameOverride: ""
+fullnameOverride: ""
+
+global:
+  namespace: dev
+
+config:
+  mysqlDatabase: wordpress
+  mysqlUser: wpuser
+
+secrets:
+  # Лучше передавать через отдельный values.private.yaml (НЕ коммитить)
+  mysqlRootPassword: CHANGE_ME
+  mysqlPassword: CHANGE_ME
+  existingSecret:
+    enabled: false
+    name: ""  # если enabled=true, chart НЕ создаёт Secret и использует этот
+
+mysql:
+  image: mysql:8.0
+  service:
+    port: 3306
+
+  persistence:
+    enabled: true
+    size: 1Gi
+    storageClass: standard
+    pv:
+      enabled: true
+      reclaimPolicy: Retain
+      hostPath: /data/codeby-mysql
+      nodeName: ""   # например: minikube (опционально)
+
+wordpress:
+  image: wordpress:latest
+
+  deployment:
+    replicaCount: 1
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+
+  service:
+    type: ClusterIP
+    port: 80
+    nodePort: 30080   # используется только если type=NodePort
+
+  persistence:
+    enabled: true
+    size: 1Gi
+    storageClass: standard
+    pv:
+      enabled: true
+      reclaimPolicy: Retain
+      hostPath: /data/codeby-wordpress
+      nodeName: ""   # например: minikube (опционально)
+
+hpa:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilization: 50
+
+networkPolicy:
+  enabled: true
+
+ingress:
+  enabled: true
+  className: nginx
+  host: wordpress.local
+  path: /
+  annotations: {}
+  tls:
+    enabled: false
+    secretName: ""

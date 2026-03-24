@@ -1,0 +1,3 @@
+NAME                     STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION                     CONTAINER-RUNTIME
+lesson21-control-plane   Ready    control-plane   39m   v1.35.1   172.20.0.3    <none>        Debian GNU/Linux 13 (trixie)   6.6.87.2-microsoft-standard-WSL2   containerd://2.2.1
+lesson21-worker          Ready    <none>          39m   v1.35.1   172.20.0.4    <none>        Debian GNU/Linux 13 (trixie)   6.6.87.2-microsoft-standard-WSL2   containerd://2.2.1

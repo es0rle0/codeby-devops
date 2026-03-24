@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "codebywp.fullname" . }}-config
+  namespace: {{ .Values.global.namespace | default .Release.Namespace }}
+  labels:
+{{ include "codebywp.labels" . | indent 4 }}
+data:
+  MYSQL_DATABASE: {{ .Values.config.mysqlDatabase | quote }}
+  MYSQL_USER: {{ .Values.config.mysqlUser | quote }}
+  WORDPRESS_DB_HOST: {{ printf "%s:%d" (include "codebywp.mysql.fullname" .) (.Values.mysql.service.port | int) | quote }}
+  WORDPRESS_DB_NAME: {{ .Values.config.mysqlDatabase | quote }}
+  WORDPRESS_DB_USER: {{ .Values.config.mysqlUser | quote }}

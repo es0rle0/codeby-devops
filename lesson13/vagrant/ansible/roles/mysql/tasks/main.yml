@@ -1,0 +1,8 @@
+---
+- name: MySQL | Tasks for Debian family
+  import_tasks: debian.yml
+  when: ansible_facts['os_family'] | lower == 'debian'
+
+- name: MySQL | Tasks for RedHat family
+  import_tasks: redhat.yml
+  when: ansible_facts['os_family'] | lower == 'redhat'
