@@ -1,0 +1,919 @@
+Branch indexing
+ > git rev-parse --resolve-git-dir /var/jenkins_home/caches/git-6323445f3d833cd1157a58c4675bd9f4/.git # timeout=10
+Setting origin to https://github.com/es0rle0/codeby-devops.git
+ > git config remote.origin.url https://github.com/es0rle0/codeby-devops.git # timeout=10
+Fetching origin...
+Fetching upstream changes from origin
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git config --get remote.origin.url # timeout=10
+ > git fetch --no-tags --force --progress -- origin +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/branch_a
+Seen branch in repository origin/branch_b
+Seen branch in repository origin/branch_c
+Seen branch in repository origin/lesson10
+Seen branch in repository origin/lesson11
+Seen branch in repository origin/lesson12
+Seen branch in repository origin/lesson13
+Seen branch in repository origin/lesson14
+Seen branch in repository origin/lesson15
+Seen branch in repository origin/lesson16
+Seen branch in repository origin/lesson17
+Seen branch in repository origin/lesson18
+Seen branch in repository origin/lesson19
+Seen branch in repository origin/lesson20
+Seen branch in repository origin/lesson21
+Seen branch in repository origin/lesson22
+Seen branch in repository origin/lesson23
+Seen branch in repository origin/lesson24
+Seen branch in repository origin/lesson25
+Seen branch in repository origin/lesson26
+Seen branch in repository origin/lesson27
+Seen branch in repository origin/lesson3
+Seen branch in repository origin/lesson4
+Seen branch in repository origin/lesson5
+Seen branch in repository origin/lesson6
+Seen branch in repository origin/lesson7
+Seen branch in repository origin/lesson8
+Seen branch in repository origin/lesson9
+Seen branch in repository origin/main
+Seen 29 remote branches
+Obtained lesson26/Jenkinsfile from 991d18957c2457684e8a7e301d8c90962b0a3626
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on agent-maven in /home/jenkins/workspace/lesson26-multibranch_lesson27
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+Fetching without tags
+ > git rev-parse --resolve-git-dir /home/jenkins/workspace/lesson26-multibranch_lesson27/.git # timeout=10
+ > git config remote.origin.url https://github.com/es0rle0/codeby-devops.git # timeout=10
+Fetching upstream changes from https://github.com/es0rle0/codeby-devops.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.52.0'
+ > git fetch --no-tags --force --progress -- https://github.com/es0rle0/codeby-devops.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking out Revision 991d18957c2457684e8a7e301d8c90962b0a3626 (lesson27)
+Commit message: "Lesson27: always run apps on lesson27 to apply Sonar Quality Gate"
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 991d18957c2457684e8a7e301d8c90962b0a3626 # timeout=10
+ > git rev-list --no-walk acb26cc308879018cec8fd9c7f336e9e6277dd3c # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+[2026-03-24T09:43:22.076Z] Selected Git installation does not exist. Using Default
+[2026-03-24T09:43:22.076Z] The recommended git tool is: NONE
+[2026-03-24T09:43:22.078Z] No credentials specified
+[2026-03-24T09:43:22.081Z] Fetching changes from the remote Git repository
+[2026-03-24T09:43:22.084Z] Fetching without tags
+[2026-03-24T09:43:22.567Z] Checking out Revision 991d18957c2457684e8a7e301d8c90962b0a3626 (lesson27)
+[2026-03-24T09:43:22.575Z] Commit message: "Lesson27: always run apps on lesson27 to apply Sonar Quality Gate"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build/Test/Deploy (parallel))
+[Pipeline] parallel
+[Pipeline] { (Branch: hello-world)
+[Pipeline] { (Branch: hello-jenkins)
+[Pipeline] { (Branch: hello-devops)
+[Pipeline] stage
+[Pipeline] { (hello-world)
+[Pipeline] stage
+[Pipeline] { (hello-jenkins)
+[Pipeline] stage
+[Pipeline] { (hello-devops)
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] sh
+[Pipeline] sh
+[Pipeline] sh
+[2026-03-24T09:43:23.043Z] + mvn -B -f lesson26/apps/hello-world/pom.xml clean package
+[2026-03-24T09:43:23.067Z] + mvn -B -f lesson26/apps/hello-jenkins/pom.xml clean package
+[2026-03-24T09:43:22.079Z]  > git rev-parse --resolve-git-dir /home/jenkins/workspace/lesson26-multibranch_lesson27/.git # timeout=10
+[2026-03-24T09:43:22.082Z]  > git config remote.origin.url https://github.com/es0rle0/codeby-devops.git # timeout=10
+[2026-03-24T09:43:22.085Z] Fetching upstream changes from https://github.com/es0rle0/codeby-devops.git
+[2026-03-24T09:43:22.085Z]  > git --version # timeout=10
+[2026-03-24T09:43:22.086Z]  > git --version # 'git version 2.52.0'
+[2026-03-24T09:43:22.086Z]  > git fetch --no-tags --force --progress -- https://github.com/es0rle0/codeby-devops.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+[2026-03-24T09:43:22.568Z]  > git config core.sparsecheckout # timeout=10
+[2026-03-24T09:43:22.570Z]  > git checkout -f 991d18957c2457684e8a7e301d8c90962b0a3626 # timeout=10
+[2026-03-24T09:43:23.097Z] + mvn -B -f lesson26/apps/hello-devops/pom.xml clean package
+[2026-03-24T09:43:23.973Z] [INFO] Scanning for projects...
+[2026-03-24T09:43:23.973Z] [INFO] 
+[2026-03-24T09:43:23.973Z] [INFO] -----------------------< ru.codeby:hello-world >------------------------
+[2026-03-24T09:43:23.973Z] [INFO] Building hello-world 1.0.0
+[2026-03-24T09:43:23.973Z] [INFO]   from pom.xml
+[2026-03-24T09:43:23.973Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-03-24T09:43:23.993Z] [INFO] Scanning for projects...
+[2026-03-24T09:43:23.993Z] [INFO] 
+[2026-03-24T09:43:23.994Z] [INFO] ----------------------< ru.codeby:hello-jenkins >-----------------------
+[2026-03-24T09:43:23.994Z] [INFO] Building hello-jenkins 1.0.0
+[2026-03-24T09:43:23.994Z] [INFO]   from pom.xml
+[2026-03-24T09:43:23.994Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-03-24T09:43:24.024Z] [INFO] Scanning for projects...
+[2026-03-24T09:43:24.024Z] [INFO] 
+[2026-03-24T09:43:24.024Z] [INFO] -----------------------< ru.codeby:hello-devops >-----------------------
+[2026-03-24T09:43:24.024Z] [INFO] Building hello-devops 1.0.0
+[2026-03-24T09:43:24.024Z] [INFO]   from pom.xml
+[2026-03-24T09:43:24.024Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-03-24T09:43:24.228Z] [INFO] 
+[2026-03-24T09:43:24.228Z] [INFO] --- clean:3.2.0:clean (default-clean) @ hello-world ---
+[2026-03-24T09:43:24.228Z] [INFO] Deleting /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-world/target
+[2026-03-24T09:43:24.228Z] [INFO] 
+[2026-03-24T09:43:24.228Z] [INFO] --- resources:3.3.1:resources (default-resources) @ hello-world ---
+[2026-03-24T09:43:24.250Z] [INFO] 
+[2026-03-24T09:43:24.250Z] [INFO] --- clean:3.2.0:clean (default-clean) @ hello-jenkins ---
+[2026-03-24T09:43:24.250Z] [INFO] Deleting /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-jenkins/target
+[2026-03-24T09:43:24.250Z] [INFO] 
+[2026-03-24T09:43:24.250Z] [INFO] --- resources:3.3.1:resources (default-resources) @ hello-jenkins ---
+[2026-03-24T09:43:24.250Z] [INFO] skip non existing resourceDirectory /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-jenkins/src/main/resources
+[2026-03-24T09:43:24.250Z] [INFO] 
+[2026-03-24T09:43:24.250Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ hello-jenkins ---
+[2026-03-24T09:43:24.282Z] [INFO] 
+[2026-03-24T09:43:24.282Z] [INFO] --- clean:3.2.0:clean (default-clean) @ hello-devops ---
+[2026-03-24T09:43:24.282Z] [INFO] Deleting /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-devops/target
+[2026-03-24T09:43:24.282Z] [INFO] 
+[2026-03-24T09:43:24.282Z] [INFO] --- resources:3.3.1:resources (default-resources) @ hello-devops ---
+[2026-03-24T09:43:24.282Z] [INFO] skip non existing resourceDirectory /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-devops/src/main/resources
+[2026-03-24T09:43:24.282Z] [INFO] 
+[2026-03-24T09:43:24.282Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ hello-devops ---
+[2026-03-24T09:43:24.484Z] [INFO] skip non existing resourceDirectory /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-world/src/main/resources
+[2026-03-24T09:43:24.484Z] [INFO] 
+[2026-03-24T09:43:24.484Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ hello-world ---
+[2026-03-24T09:43:24.484Z] [INFO] Recompiling the module because of changed source code.
+[2026-03-24T09:43:24.484Z] [INFO] Compiling 1 source file with javac [debug target 17] to target/classes
+[2026-03-24T09:43:24.505Z] [INFO] Recompiling the module because of changed source code.
+[2026-03-24T09:43:24.505Z] [INFO] Compiling 1 source file with javac [debug target 17] to target/classes
+[2026-03-24T09:43:24.537Z] [INFO] Recompiling the module because of changed source code.
+[2026-03-24T09:43:24.537Z] [INFO] Compiling 1 source file with javac [debug target 17] to target/classes
+[2026-03-24T09:43:24.740Z] [INFO] 
+[2026-03-24T09:43:24.740Z] [INFO] --- resources:3.3.1:testResources (default-testResources) @ hello-world ---
+[2026-03-24T09:43:24.740Z] [INFO] skip non existing resourceDirectory /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-world/src/test/resources
+[2026-03-24T09:43:24.740Z] [INFO] 
+[2026-03-24T09:43:24.740Z] [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hello-world ---
+[2026-03-24T09:43:24.740Z] [INFO] Recompiling the module because of changed dependency.
+[2026-03-24T09:43:24.740Z] [INFO] Compiling 1 source file with javac [debug target 17] to target/test-classes
+[2026-03-24T09:43:24.760Z] [INFO] 
+[2026-03-24T09:43:24.760Z] [INFO] --- resources:3.3.1:testResources (default-testResources) @ hello-jenkins ---
+[2026-03-24T09:43:24.760Z] [INFO] skip non existing resourceDirectory /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-jenkins/src/test/resources
+[2026-03-24T09:43:24.760Z] [INFO] 
+[2026-03-24T09:43:24.760Z] [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hello-jenkins ---
+[2026-03-24T09:43:24.760Z] [INFO] Recompiling the module because of changed dependency.
+[2026-03-24T09:43:24.760Z] [INFO] Compiling 1 source file with javac [debug target 17] to target/test-classes
+[2026-03-24T09:43:24.793Z] [INFO] 
+[2026-03-24T09:43:24.793Z] [INFO] --- resources:3.3.1:testResources (default-testResources) @ hello-devops ---
+[2026-03-24T09:43:24.793Z] [INFO] skip non existing resourceDirectory /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-devops/src/test/resources
+[2026-03-24T09:43:24.793Z] [INFO] 
+[2026-03-24T09:43:24.793Z] [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hello-devops ---
+[2026-03-24T09:43:24.793Z] [INFO] Recompiling the module because of changed dependency.
+[2026-03-24T09:43:24.793Z] [INFO] Compiling 1 source file with javac [debug target 17] to target/test-classes
+[2026-03-24T09:43:24.793Z] [INFO] 
+[2026-03-24T09:43:24.793Z] [INFO] --- surefire:3.2.5:test (default-test) @ hello-devops ---
+[2026-03-24T09:43:24.997Z] [INFO] 
+[2026-03-24T09:43:24.997Z] [INFO] --- surefire:3.2.5:test (default-test) @ hello-world ---
+[2026-03-24T09:43:25.016Z] [INFO] 
+[2026-03-24T09:43:25.016Z] [INFO] --- surefire:3.2.5:test (default-test) @ hello-jenkins ---
+[2026-03-24T09:43:25.049Z] [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[2026-03-24T09:43:25.253Z] [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[2026-03-24T09:43:25.253Z] [INFO] 
+[2026-03-24T09:43:25.253Z] [INFO] -------------------------------------------------------
+[2026-03-24T09:43:25.253Z] [INFO]  T E S T S
+[2026-03-24T09:43:25.253Z] [INFO] -------------------------------------------------------
+[2026-03-24T09:43:25.272Z] [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[2026-03-24T09:43:25.272Z] [INFO] 
+[2026-03-24T09:43:25.272Z] [INFO] -------------------------------------------------------
+[2026-03-24T09:43:25.272Z] [INFO]  T E S T S
+[2026-03-24T09:43:25.272Z] [INFO] -------------------------------------------------------
+[2026-03-24T09:43:25.304Z] [INFO] 
+[2026-03-24T09:43:25.304Z] [INFO] -------------------------------------------------------
+[2026-03-24T09:43:25.304Z] [INFO]  T E S T S
+[2026-03-24T09:43:25.304Z] [INFO] -------------------------------------------------------
+[2026-03-24T09:43:25.559Z] [INFO] Running ru.codeby.AppTest
+[2026-03-24T09:43:25.812Z] [INFO] Running ru.codeby.AppTest
+[2026-03-24T09:43:25.812Z] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.035 s -- in ru.codeby.AppTest
+[2026-03-24T09:43:25.812Z] [INFO] 
+[2026-03-24T09:43:25.812Z] [INFO] Results:
+[2026-03-24T09:43:25.812Z] [INFO] 
+[2026-03-24T09:43:25.812Z] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[2026-03-24T09:43:25.812Z] [INFO] 
+[2026-03-24T09:43:25.812Z] [INFO] 
+[2026-03-24T09:43:25.812Z] [INFO] --- jar:3.4.2:jar (default-jar) @ hello-world ---
+[2026-03-24T09:43:25.812Z] [INFO] Building jar: /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-world/target/hello-world-1.0.0.jar
+[2026-03-24T09:43:25.812Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:25.812Z] [INFO] BUILD SUCCESS
+[2026-03-24T09:43:25.812Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:25.812Z] [INFO] Total time:  1.964 s
+[2026-03-24T09:43:25.812Z] [INFO] Finished at: 2026-03-24T09:43:25Z
+[2026-03-24T09:43:25.812Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:25.812Z] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.039 s -- in ru.codeby.AppTest
+[2026-03-24T09:43:25.812Z] [INFO] 
+[2026-03-24T09:43:25.812Z] [INFO] Results:
+[2026-03-24T09:43:25.812Z] [INFO] 
+[2026-03-24T09:43:25.812Z] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[2026-03-24T09:43:25.812Z] [INFO] 
+[2026-03-24T09:43:25.812Z] [INFO] 
+[2026-03-24T09:43:25.812Z] [INFO] --- jar:3.4.2:jar (default-jar) @ hello-devops ---
+[2026-03-24T09:43:25.812Z] [INFO] Building jar: /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-devops/target/hello-devops-1.0.0.jar
+[2026-03-24T09:43:25.812Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:25.812Z] [INFO] BUILD SUCCESS
+[2026-03-24T09:43:25.812Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:25.812Z] [INFO] Total time:  1.951 s
+[2026-03-24T09:43:25.812Z] [INFO] Finished at: 2026-03-24T09:43:25Z
+[2026-03-24T09:43:25.812Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:25.832Z] [INFO] Running ru.codeby.AppTest
+[2026-03-24T09:43:25.832Z] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 s -- in ru.codeby.AppTest
+[2026-03-24T09:43:25.832Z] [INFO] 
+[2026-03-24T09:43:25.832Z] [INFO] Results:
+[2026-03-24T09:43:25.832Z] [INFO] 
+[2026-03-24T09:43:25.832Z] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[2026-03-24T09:43:25.832Z] [INFO] 
+[2026-03-24T09:43:25.832Z] [INFO] 
+[2026-03-24T09:43:25.832Z] [INFO] --- jar:3.4.2:jar (default-jar) @ hello-jenkins ---
+[2026-03-24T09:43:25.832Z] [INFO] Building jar: /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-jenkins/target/hello-jenkins-1.0.0.jar
+[2026-03-24T09:43:25.832Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:25.832Z] [INFO] BUILD SUCCESS
+[2026-03-24T09:43:25.832Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:25.832Z] [INFO] Total time:  1.970 s
+[2026-03-24T09:43:25.832Z] [INFO] Finished at: 2026-03-24T09:43:25Z
+[2026-03-24T09:43:25.832Z] [INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] sh
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] sh
+[2026-03-24T09:43:26.149Z] + mvn -B -f lesson26/apps/hello-jenkins/pom.xml test
+[Pipeline] sh
+[2026-03-24T09:43:26.409Z] + mvn -B -f lesson26/apps/hello-world/pom.xml test
+[2026-03-24T09:43:26.426Z] + mvn -B -f lesson26/apps/hello-devops/pom.xml test
+[2026-03-24T09:43:27.075Z] [INFO] Scanning for projects...
+[2026-03-24T09:43:27.075Z] [INFO] 
+[2026-03-24T09:43:27.075Z] [INFO] ----------------------< ru.codeby:hello-jenkins >-----------------------
+[2026-03-24T09:43:27.075Z] [INFO] Building hello-jenkins 1.0.0
+[2026-03-24T09:43:27.075Z] [INFO]   from pom.xml
+[2026-03-24T09:43:27.075Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-03-24T09:43:27.075Z] [INFO] 
+[2026-03-24T09:43:27.075Z] [INFO] --- resources:3.3.1:resources (default-resources) @ hello-jenkins ---
+[2026-03-24T09:43:27.332Z] [INFO] skip non existing resourceDirectory /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-jenkins/src/main/resources
+[2026-03-24T09:43:27.332Z] [INFO] 
+[2026-03-24T09:43:27.332Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ hello-jenkins ---
+[2026-03-24T09:43:27.332Z] [INFO] Nothing to compile - all classes are up to date.
+[2026-03-24T09:43:27.332Z] [INFO] 
+[2026-03-24T09:43:27.332Z] [INFO] --- resources:3.3.1:testResources (default-testResources) @ hello-jenkins ---
+[2026-03-24T09:43:27.332Z] [INFO] skip non existing resourceDirectory /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-jenkins/src/test/resources
+[2026-03-24T09:43:27.332Z] [INFO] 
+[2026-03-24T09:43:27.332Z] [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hello-jenkins ---
+[2026-03-24T09:43:27.332Z] [INFO] Nothing to compile - all classes are up to date.
+[2026-03-24T09:43:27.332Z] [INFO] 
+[2026-03-24T09:43:27.332Z] [INFO] --- surefire:3.2.5:test (default-test) @ hello-jenkins ---
+[2026-03-24T09:43:27.337Z] [INFO] Scanning for projects...
+[2026-03-24T09:43:27.337Z] [INFO] 
+[2026-03-24T09:43:27.337Z] [INFO] -----------------------< ru.codeby:hello-world >------------------------
+[2026-03-24T09:43:27.337Z] [INFO] Building hello-world 1.0.0
+[2026-03-24T09:43:27.337Z] [INFO]   from pom.xml
+[2026-03-24T09:43:27.337Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-03-24T09:43:27.337Z] [INFO] 
+[2026-03-24T09:43:27.337Z] [INFO] --- resources:3.3.1:resources (default-resources) @ hello-world ---
+[2026-03-24T09:43:27.352Z] [INFO] Scanning for projects...
+[2026-03-24T09:43:27.352Z] [INFO] 
+[2026-03-24T09:43:27.352Z] [INFO] -----------------------< ru.codeby:hello-devops >-----------------------
+[2026-03-24T09:43:27.352Z] [INFO] Building hello-devops 1.0.0
+[2026-03-24T09:43:27.352Z] [INFO]   from pom.xml
+[2026-03-24T09:43:27.352Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-03-24T09:43:27.352Z] [INFO] 
+[2026-03-24T09:43:27.352Z] [INFO] --- resources:3.3.1:resources (default-resources) @ hello-devops ---
+[2026-03-24T09:43:27.587Z] [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[2026-03-24T09:43:27.587Z] [INFO] 
+[2026-03-24T09:43:27.587Z] [INFO] -------------------------------------------------------
+[2026-03-24T09:43:27.587Z] [INFO]  T E S T S
+[2026-03-24T09:43:27.587Z] [INFO] -------------------------------------------------------
+[2026-03-24T09:43:27.592Z] [INFO] skip non existing resourceDirectory /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-world/src/main/resources
+[2026-03-24T09:43:27.592Z] [INFO] 
+[2026-03-24T09:43:27.592Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ hello-world ---
+[2026-03-24T09:43:27.592Z] [INFO] Nothing to compile - all classes are up to date.
+[2026-03-24T09:43:27.592Z] [INFO] 
+[2026-03-24T09:43:27.592Z] [INFO] --- resources:3.3.1:testResources (default-testResources) @ hello-world ---
+[2026-03-24T09:43:27.592Z] [INFO] skip non existing resourceDirectory /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-world/src/test/resources
+[2026-03-24T09:43:27.592Z] [INFO] 
+[2026-03-24T09:43:27.592Z] [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hello-world ---
+[2026-03-24T09:43:27.592Z] [INFO] Nothing to compile - all classes are up to date.
+[2026-03-24T09:43:27.592Z] [INFO] 
+[2026-03-24T09:43:27.592Z] [INFO] --- surefire:3.2.5:test (default-test) @ hello-world ---
+[2026-03-24T09:43:27.608Z] [INFO] skip non existing resourceDirectory /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-devops/src/main/resources
+[2026-03-24T09:43:27.608Z] [INFO] 
+[2026-03-24T09:43:27.608Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ hello-devops ---
+[2026-03-24T09:43:27.608Z] [INFO] Nothing to compile - all classes are up to date.
+[2026-03-24T09:43:27.608Z] [INFO] 
+[2026-03-24T09:43:27.608Z] [INFO] --- resources:3.3.1:testResources (default-testResources) @ hello-devops ---
+[2026-03-24T09:43:27.608Z] [INFO] skip non existing resourceDirectory /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-devops/src/test/resources
+[2026-03-24T09:43:27.608Z] [INFO] 
+[2026-03-24T09:43:27.608Z] [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hello-devops ---
+[2026-03-24T09:43:27.608Z] [INFO] Nothing to compile - all classes are up to date.
+[2026-03-24T09:43:27.608Z] [INFO] 
+[2026-03-24T09:43:27.608Z] [INFO] --- surefire:3.2.5:test (default-test) @ hello-devops ---
+[2026-03-24T09:43:27.842Z] [INFO] Running ru.codeby.AppTest
+[2026-03-24T09:43:27.842Z] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s -- in ru.codeby.AppTest
+[2026-03-24T09:43:27.842Z] [INFO] 
+[2026-03-24T09:43:27.842Z] [INFO] Results:
+[2026-03-24T09:43:27.842Z] [INFO] 
+[2026-03-24T09:43:27.842Z] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[2026-03-24T09:43:27.842Z] [INFO] 
+[2026-03-24T09:43:27.842Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:27.842Z] [INFO] BUILD SUCCESS
+[2026-03-24T09:43:27.842Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:27.842Z] [INFO] Total time:  1.056 s
+[2026-03-24T09:43:27.842Z] [INFO] Finished at: 2026-03-24T09:43:27Z
+[2026-03-24T09:43:27.842Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:27.846Z] [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[2026-03-24T09:43:27.846Z] [INFO] 
+[2026-03-24T09:43:27.846Z] [INFO] -------------------------------------------------------
+[2026-03-24T09:43:27.846Z] [INFO]  T E S T S
+[2026-03-24T09:43:27.846Z] [INFO] -------------------------------------------------------
+[2026-03-24T09:43:27.862Z] [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[2026-03-24T09:43:27.863Z] [INFO] 
+[2026-03-24T09:43:27.863Z] [INFO] -------------------------------------------------------
+[2026-03-24T09:43:27.863Z] [INFO]  T E S T S
+[2026-03-24T09:43:27.863Z] [INFO] -------------------------------------------------------
+[2026-03-24T09:43:28.101Z] [INFO] Running ru.codeby.AppTest
+[2026-03-24T09:43:28.101Z] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in ru.codeby.AppTest
+[Pipeline] }
+[2026-03-24T09:43:28.116Z] [INFO] Running ru.codeby.AppTest
+[2026-03-24T09:43:28.116Z] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s -- in ru.codeby.AppTest
+[2026-03-24T09:43:28.116Z] [INFO] 
+[2026-03-24T09:43:28.116Z] [INFO] Results:
+[2026-03-24T09:43:28.116Z] [INFO] 
+[2026-03-24T09:43:28.116Z] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[2026-03-24T09:43:28.116Z] [INFO] 
+[2026-03-24T09:43:28.116Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:28.116Z] [INFO] BUILD SUCCESS
+[2026-03-24T09:43:28.116Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:28.116Z] [INFO] Total time:  1.001 s
+[2026-03-24T09:43:28.116Z] [INFO] Finished at: 2026-03-24T09:43:28Z
+[2026-03-24T09:43:28.116Z] [INFO] ------------------------------------------------------------------------
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analyze)
+[Pipeline] withSonarQubeEnv
+[2026-03-24T09:43:28.164Z] Injecting SonarQube environment variables using the configuration: SonarQube
+[Pipeline] {
+[Pipeline] sh
+[2026-03-24T09:43:28.355Z] [INFO] 
+[2026-03-24T09:43:28.355Z] [INFO] Results:
+[2026-03-24T09:43:28.355Z] [INFO] 
+[2026-03-24T09:43:28.355Z] [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[2026-03-24T09:43:28.355Z] [INFO] 
+[2026-03-24T09:43:28.355Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:28.355Z] [INFO] BUILD SUCCESS
+[2026-03-24T09:43:28.355Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:28.355Z] [INFO] Total time:  0.995 s
+[2026-03-24T09:43:28.355Z] [INFO] Finished at: 2026-03-24T09:43:28Z
+[2026-03-24T09:43:28.355Z] [INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analyze)
+[Pipeline] stage
+[Pipeline] { (SonarQube Analyze)
+[Pipeline] withSonarQubeEnv
+[2026-03-24T09:43:28.447Z] Injecting SonarQube environment variables using the configuration: SonarQube
+[2026-03-24T09:43:28.452Z] + mvn -B -f lesson26/apps/hello-jenkins/pom.xml sonar:sonar '-Dsonar.projectKey=codeby-hello-jenkins' '-Dsonar.projectName=Hello Jenkins'
+[Pipeline] withSonarQubeEnv
+[2026-03-24T09:43:28.457Z] Injecting SonarQube environment variables using the configuration: SonarQube
+[Pipeline] {
+[Pipeline] {
+[Pipeline] sh
+[Pipeline] sh
+[2026-03-24T09:43:28.759Z] + mvn -B -f lesson26/apps/hello-world/pom.xml sonar:sonar '-Dsonar.projectKey=codeby-hello-world' '-Dsonar.projectName=Hello World'
+[2026-03-24T09:43:28.789Z] + mvn -B -f lesson26/apps/hello-devops/pom.xml sonar:sonar '-Dsonar.projectKey=codeby-hello-devops' '-Dsonar.projectName=Hello Devops'
+[2026-03-24T09:43:29.388Z] [INFO] Scanning for projects...
+[2026-03-24T09:43:29.388Z] [WARNING] The artifact org.codehaus.mojo:sonar-maven-plugin:jar:4.0.0.4121 has been relocated to org.sonarsource.scanner.maven:sonar-maven-plugin:jar:4.0.0.4121: SonarQube plugin was moved to SonarSource organisation
+[2026-03-24T09:43:29.388Z] [INFO] 
+[2026-03-24T09:43:29.388Z] [INFO] ----------------------< ru.codeby:hello-jenkins >-----------------------
+[2026-03-24T09:43:29.388Z] [INFO] Building hello-jenkins 1.0.0
+[2026-03-24T09:43:29.388Z] [INFO]   from pom.xml
+[2026-03-24T09:43:29.388Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-03-24T09:43:29.388Z] [INFO] 
+[2026-03-24T09:43:29.388Z] [INFO] --- sonar:4.0.0.4121:sonar (default-cli) @ hello-jenkins ---
+[2026-03-24T09:43:29.643Z] [WARNING] 09:43:29.448 Using an unspecified version instead of an explicit plugin version may introduce breaking analysis changes at an unwanted time. It is highly recommended to use an explicit version, e.g. 'org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121'.
+[2026-03-24T09:43:29.643Z] [INFO] 09:43:29.462 Java 17.0.18 Eclipse Adoptium (64-bit)
+[2026-03-24T09:43:29.643Z] [INFO] 09:43:29.462 Linux 6.6.87.2-microsoft-standard-WSL2 (amd64)
+[2026-03-24T09:43:29.685Z] [INFO] Scanning for projects...
+[2026-03-24T09:43:29.715Z] [INFO] Scanning for projects...
+[2026-03-24T09:43:29.898Z] [INFO] 09:43:29.649 User cache: /home/jenkins/.sonar/cache
+[2026-03-24T09:43:29.898Z] [INFO] 09:43:29.713 Communicating with SonarQube Server 9.9.8.100196
+[2026-03-24T09:43:29.898Z] [INFO] 09:43:29.731 Default locale: "en_US", source code encoding: "UTF-8"
+[2026-03-24T09:43:29.940Z] [WARNING] The artifact org.codehaus.mojo:sonar-maven-plugin:jar:4.0.0.4121 has been relocated to org.sonarsource.scanner.maven:sonar-maven-plugin:jar:4.0.0.4121: SonarQube plugin was moved to SonarSource organisation
+[2026-03-24T09:43:29.940Z] [INFO] 
+[2026-03-24T09:43:29.940Z] [INFO] -----------------------< ru.codeby:hello-world >------------------------
+[2026-03-24T09:43:29.940Z] [INFO] Building hello-world 1.0.0
+[2026-03-24T09:43:29.940Z] [INFO]   from pom.xml
+[2026-03-24T09:43:29.940Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-03-24T09:43:29.940Z] [INFO] 
+[2026-03-24T09:43:29.940Z] [INFO] --- sonar:4.0.0.4121:sonar (default-cli) @ hello-world ---
+[2026-03-24T09:43:29.940Z] [WARNING] 09:43:29.800 Using an unspecified version instead of an explicit plugin version may introduce breaking analysis changes at an unwanted time. It is highly recommended to use an explicit version, e.g. 'org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121'.
+[2026-03-24T09:43:29.940Z] [INFO] 09:43:29.811 Java 17.0.18 Eclipse Adoptium (64-bit)
+[2026-03-24T09:43:29.940Z] [INFO] 09:43:29.812 Linux 6.6.87.2-microsoft-standard-WSL2 (amd64)
+[2026-03-24T09:43:29.969Z] [WARNING] The artifact org.codehaus.mojo:sonar-maven-plugin:jar:4.0.0.4121 has been relocated to org.sonarsource.scanner.maven:sonar-maven-plugin:jar:4.0.0.4121: SonarQube plugin was moved to SonarSource organisation
+[2026-03-24T09:43:29.970Z] [INFO] 
+[2026-03-24T09:43:29.970Z] [INFO] -----------------------< ru.codeby:hello-devops >-----------------------
+[2026-03-24T09:43:29.970Z] [INFO] Building hello-devops 1.0.0
+[2026-03-24T09:43:29.970Z] [INFO]   from pom.xml
+[2026-03-24T09:43:29.970Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-03-24T09:43:29.970Z] [INFO] 
+[2026-03-24T09:43:29.970Z] [INFO] --- sonar:4.0.0.4121:sonar (default-cli) @ hello-devops ---
+[2026-03-24T09:43:29.970Z] [WARNING] 09:43:29.830 Using an unspecified version instead of an explicit plugin version may introduce breaking analysis changes at an unwanted time. It is highly recommended to use an explicit version, e.g. 'org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121'.
+[2026-03-24T09:43:29.970Z] [INFO] 09:43:29.841 Java 17.0.18 Eclipse Adoptium (64-bit)
+[2026-03-24T09:43:29.970Z] [INFO] 09:43:29.841 Linux 6.6.87.2-microsoft-standard-WSL2 (amd64)
+[2026-03-24T09:43:30.152Z] [INFO] 09:43:30.045 Load global settings
+[2026-03-24T09:43:30.152Z] [INFO] 09:43:30.097 Load global settings (done) | time=52ms
+[2026-03-24T09:43:30.152Z] [INFO] 09:43:30.099 Server id: 4F833BF3-AZ0bNQ1fR9A9brUtfCPs
+[2026-03-24T09:43:30.152Z] [INFO] 09:43:30.101 User cache: /home/jenkins/.sonar/cache
+[2026-03-24T09:43:30.152Z] [INFO] 09:43:30.104 Load/download plugins
+[2026-03-24T09:43:30.152Z] [INFO] 09:43:30.104 Load plugins index
+[2026-03-24T09:43:30.152Z] [INFO] 09:43:30.131 Load plugins index (done) | time=27ms
+[2026-03-24T09:43:30.195Z] [INFO] 09:43:29.965 User cache: /home/jenkins/.sonar/cache
+[2026-03-24T09:43:30.195Z] [INFO] 09:43:30.013 Communicating with SonarQube Server 9.9.8.100196
+[2026-03-24T09:43:30.195Z] [INFO] 09:43:30.028 Default locale: "en_US", source code encoding: "UTF-8"
+[2026-03-24T09:43:30.225Z] [INFO] 09:43:29.983 User cache: /home/jenkins/.sonar/cache
+[2026-03-24T09:43:30.225Z] [INFO] 09:43:30.032 Communicating with SonarQube Server 9.9.8.100196
+[2026-03-24T09:43:30.225Z] [INFO] 09:43:30.043 Default locale: "en_US", source code encoding: "UTF-8"
+[2026-03-24T09:43:30.407Z] [INFO] 09:43:30.178 Load/download plugins (done) | time=74ms
+[2026-03-24T09:43:30.459Z] [INFO] 09:43:30.314 Load global settings
+[2026-03-24T09:43:30.460Z] [INFO] 09:43:30.362 Load global settings (done) | time=48ms
+[2026-03-24T09:43:30.460Z] [INFO] 09:43:30.363 Server id: 4F833BF3-AZ0bNQ1fR9A9brUtfCPs
+[2026-03-24T09:43:30.460Z] [INFO] 09:43:30.365 User cache: /home/jenkins/.sonar/cache
+[2026-03-24T09:43:30.460Z] [INFO] 09:43:30.368 Load/download plugins
+[2026-03-24T09:43:30.460Z] [INFO] 09:43:30.368 Load plugins index
+[2026-03-24T09:43:30.460Z] [INFO] 09:43:30.394 Load plugins index (done) | time=26ms
+[2026-03-24T09:43:30.460Z] [INFO] 09:43:30.425 Load/download plugins (done) | time=57ms
+[2026-03-24T09:43:30.480Z] [INFO] 09:43:30.322 Load global settings
+[2026-03-24T09:43:30.480Z] [INFO] 09:43:30.373 Load global settings (done) | time=52ms
+[2026-03-24T09:43:30.480Z] [INFO] 09:43:30.374 Server id: 4F833BF3-AZ0bNQ1fR9A9brUtfCPs
+[2026-03-24T09:43:30.480Z] [INFO] 09:43:30.376 User cache: /home/jenkins/.sonar/cache
+[2026-03-24T09:43:30.480Z] [INFO] 09:43:30.378 Load/download plugins
+[2026-03-24T09:43:30.480Z] [INFO] 09:43:30.378 Load plugins index
+[2026-03-24T09:43:30.480Z] [INFO] 09:43:30.403 Load plugins index (done) | time=25ms
+[2026-03-24T09:43:30.480Z] [INFO] 09:43:30.434 Load/download plugins (done) | time=56ms
+[2026-03-24T09:43:30.661Z] [INFO] 09:43:30.520 Process project properties
+[2026-03-24T09:43:30.661Z] [INFO] 09:43:30.527 Process project properties (done) | time=7ms
+[2026-03-24T09:43:30.661Z] [INFO] 09:43:30.529 Execute project builders
+[2026-03-24T09:43:30.661Z] [INFO] 09:43:30.530 Execute project builders (done) | time=1ms
+[2026-03-24T09:43:30.661Z] [INFO] 09:43:30.533 Project key: codeby-hello-jenkins
+[2026-03-24T09:43:30.661Z] [INFO] 09:43:30.534 Base dir: /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-jenkins
+[2026-03-24T09:43:30.661Z] [INFO] 09:43:30.534 Working dir: /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-jenkins/target/sonar
+[2026-03-24T09:43:30.662Z] [INFO] 09:43:30.538 Load project settings for component key: 'codeby-hello-jenkins'
+[2026-03-24T09:43:30.662Z] [INFO] 09:43:30.567 Load project settings for component key: 'codeby-hello-jenkins' (done) | time=29ms
+[2026-03-24T09:43:30.916Z] [INFO] 09:43:30.686 Auto-configuring with CI 'Jenkins'
+[2026-03-24T09:43:30.916Z] [INFO] 09:43:30.688 Load quality profiles
+[2026-03-24T09:43:30.916Z] [INFO] 09:43:30.736 Load quality profiles (done) | time=47ms
+[2026-03-24T09:43:30.916Z] [INFO] 09:43:30.739 Load active rules
+[2026-03-24T09:43:31.017Z] [INFO] 09:43:30.752 Process project properties
+[2026-03-24T09:43:31.017Z] [INFO] 09:43:30.758 Process project properties (done) | time=6ms
+[2026-03-24T09:43:31.017Z] [INFO] 09:43:30.759 Execute project builders
+[2026-03-24T09:43:31.017Z] [INFO] 09:43:30.760 Execute project builders (done) | time=1ms
+[2026-03-24T09:43:31.017Z] [INFO] 09:43:30.763 Project key: codeby-hello-world
+[2026-03-24T09:43:31.017Z] [INFO] 09:43:30.763 Base dir: /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-world
+[2026-03-24T09:43:31.017Z] [INFO] 09:43:30.763 Working dir: /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-world/target/sonar
+[2026-03-24T09:43:31.017Z] [INFO] 09:43:30.769 Load project settings for component key: 'codeby-hello-world'
+[2026-03-24T09:43:31.017Z] [INFO] 09:43:30.782 Load project settings for component key: 'codeby-hello-world' (done) | time=13ms
+[2026-03-24T09:43:31.017Z] [INFO] 09:43:30.878 Auto-configuring with CI 'Jenkins'
+[2026-03-24T09:43:31.017Z] [INFO] 09:43:30.880 Load quality profiles
+[2026-03-24T09:43:31.017Z] [INFO] 09:43:30.919 Load quality profiles (done) | time=39ms
+[2026-03-24T09:43:31.017Z] [INFO] 09:43:30.922 Load active rules
+[2026-03-24T09:43:31.040Z] [INFO] 09:43:30.777 Process project properties
+[2026-03-24T09:43:31.040Z] [INFO] 09:43:30.783 Process project properties (done) | time=6ms
+[2026-03-24T09:43:31.040Z] [INFO] 09:43:30.786 Execute project builders
+[2026-03-24T09:43:31.040Z] [INFO] 09:43:30.787 Execute project builders (done) | time=1ms
+[2026-03-24T09:43:31.040Z] [INFO] 09:43:30.790 Project key: codeby-hello-devops
+[2026-03-24T09:43:31.040Z] [INFO] 09:43:30.790 Base dir: /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-devops
+[2026-03-24T09:43:31.040Z] [INFO] 09:43:30.790 Working dir: /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-devops/target/sonar
+[2026-03-24T09:43:31.040Z] [INFO] 09:43:30.794 Load project settings for component key: 'codeby-hello-devops'
+[2026-03-24T09:43:31.040Z] [INFO] 09:43:30.810 Load project settings for component key: 'codeby-hello-devops' (done) | time=16ms
+[2026-03-24T09:43:31.040Z] [INFO] 09:43:30.917 Auto-configuring with CI 'Jenkins'
+[2026-03-24T09:43:31.040Z] [INFO] 09:43:30.919 Load quality profiles
+[2026-03-24T09:43:31.040Z] [INFO] 09:43:30.957 Load quality profiles (done) | time=38ms
+[2026-03-24T09:43:31.040Z] [INFO] 09:43:30.960 Load active rules
+[2026-03-24T09:43:31.840Z] [INFO] 09:43:31.539 Load active rules (done) | time=800ms
+[2026-03-24T09:43:31.840Z] [INFO] 09:43:31.544 Load analysis cache
+[2026-03-24T09:43:31.840Z] [INFO] 09:43:31.560 Load analysis cache (113 bytes) | time=16ms
+[2026-03-24T09:43:31.840Z] [INFO] 09:43:31.594 Load project repositories
+[2026-03-24T09:43:31.840Z] [INFO] 09:43:31.612 Load project repositories (done) | time=18ms
+[2026-03-24T09:43:31.840Z] [INFO] 09:43:31.634 Indexing files...
+[2026-03-24T09:43:31.840Z] [INFO] 09:43:31.635 Project configuration:
+[2026-03-24T09:43:31.840Z] [INFO] 09:43:31.771 3 files indexed
+[2026-03-24T09:43:31.840Z] [INFO] 09:43:31.771 0 files ignored because of scm ignore settings
+[2026-03-24T09:43:31.840Z] [INFO] 09:43:31.773 Quality profile for java: Sonar way
+[2026-03-24T09:43:31.840Z] [INFO] 09:43:31.773 Quality profile for xml: Sonar way
+[2026-03-24T09:43:31.840Z] [INFO] 09:43:31.773 ------------- Run sensors on module Hello Jenkins
+[2026-03-24T09:43:31.943Z] [INFO] 09:43:31.631 Load active rules (done) | time=709ms
+[2026-03-24T09:43:31.943Z] [INFO] 09:43:31.635 Load analysis cache
+[2026-03-24T09:43:31.943Z] [INFO] 09:43:31.647 Load analysis cache (111 bytes) | time=12ms
+[2026-03-24T09:43:31.943Z] [INFO] 09:43:31.691 Load project repositories
+[2026-03-24T09:43:31.943Z] [INFO] 09:43:31.708 Load project repositories (done) | time=17ms
+[2026-03-24T09:43:31.943Z] [INFO] 09:43:31.734 Indexing files...
+[2026-03-24T09:43:31.943Z] [INFO] 09:43:31.735 Project configuration:
+[2026-03-24T09:43:31.943Z] [INFO] 09:43:31.847 3 files indexed
+[2026-03-24T09:43:31.943Z] [INFO] 09:43:31.847 0 files ignored because of scm ignore settings
+[2026-03-24T09:43:31.943Z] [INFO] 09:43:31.848 Quality profile for java: Sonar way
+[2026-03-24T09:43:31.943Z] [INFO] 09:43:31.848 Quality profile for xml: Sonar way
+[2026-03-24T09:43:31.943Z] [INFO] 09:43:31.848 ------------- Run sensors on module Hello World
+[2026-03-24T09:43:31.966Z] [INFO] 09:43:31.676 Load active rules (done) | time=716ms
+[2026-03-24T09:43:31.966Z] [INFO] 09:43:31.680 Load analysis cache
+[2026-03-24T09:43:31.966Z] [INFO] 09:43:31.693 Load analysis cache (112 bytes) | time=13ms
+[2026-03-24T09:43:31.966Z] [INFO] 09:43:31.730 Load project repositories
+[2026-03-24T09:43:31.966Z] [INFO] 09:43:31.747 Load project repositories (done) | time=17ms
+[2026-03-24T09:43:31.966Z] [INFO] 09:43:31.779 Indexing files...
+[2026-03-24T09:43:31.966Z] [INFO] 09:43:31.780 Project configuration:
+[2026-03-24T09:43:31.966Z] [INFO] 09:43:31.910 3 files indexed
+[2026-03-24T09:43:31.966Z] [INFO] 09:43:31.911 0 files ignored because of scm ignore settings
+[2026-03-24T09:43:31.966Z] [INFO] 09:43:31.912 Quality profile for java: Sonar way
+[2026-03-24T09:43:31.966Z] [INFO] 09:43:31.912 Quality profile for xml: Sonar way
+[2026-03-24T09:43:31.966Z] [INFO] 09:43:31.913 ------------- Run sensors on module Hello Devops
+[2026-03-24T09:43:32.096Z] [INFO] 09:43:31.883 Load metrics repository
+[2026-03-24T09:43:32.096Z] [INFO] 09:43:31.903 Load metrics repository (done) | time=20ms
+[2026-03-24T09:43:32.197Z] [INFO] 09:43:31.945 Load metrics repository
+[2026-03-24T09:43:32.197Z] [INFO] 09:43:31.966 Load metrics repository (done) | time=21ms
+[2026-03-24T09:43:32.220Z] [INFO] 09:43:32.014 Load metrics repository
+[2026-03-24T09:43:32.220Z] [INFO] 09:43:32.029 Load metrics repository (done) | time=15ms
+[2026-03-24T09:43:33.019Z] [INFO] 09:43:32.887 Sensor JavaSensor [java]
+[2026-03-24T09:43:33.019Z] [INFO] 09:43:32.891 Configured Java source version (sonar.java.source): 17
+[2026-03-24T09:43:33.019Z] [INFO] 09:43:32.896 JavaClasspath initialization
+[2026-03-24T09:43:33.019Z] [INFO] 09:43:32.898 JavaClasspath initialization (done) | time=2ms
+[2026-03-24T09:43:33.019Z] [INFO] 09:43:32.898 JavaTestClasspath initialization
+[2026-03-24T09:43:33.019Z] [INFO] 09:43:32.899 JavaTestClasspath initialization (done) | time=1ms
+[2026-03-24T09:43:33.019Z] [INFO] 09:43:32.907 Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+[2026-03-24T09:43:33.019Z] [INFO] 09:43:32.911 Using ECJ batch to parse 1 Main java source files with batch size 207 KB.
+[2026-03-24T09:43:33.019Z] [INFO] 09:43:33.012 Starting batch processing.
+[2026-03-24T09:43:33.119Z] [INFO] 09:43:32.859 Sensor JavaSensor [java]
+[2026-03-24T09:43:33.119Z] [INFO] 09:43:32.863 Configured Java source version (sonar.java.source): 17
+[2026-03-24T09:43:33.119Z] [INFO] 09:43:32.866 JavaClasspath initialization
+[2026-03-24T09:43:33.119Z] [INFO] 09:43:32.868 JavaClasspath initialization (done) | time=2ms
+[2026-03-24T09:43:33.119Z] [INFO] 09:43:32.868 JavaTestClasspath initialization
+[2026-03-24T09:43:33.119Z] [INFO] 09:43:32.869 JavaTestClasspath initialization (done) | time=1ms
+[2026-03-24T09:43:33.119Z] [INFO] 09:43:32.879 Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+[2026-03-24T09:43:33.119Z] [INFO] 09:43:32.882 Using ECJ batch to parse 1 Main java source files with batch size 207 KB.
+[2026-03-24T09:43:33.119Z] [INFO] 09:43:33.007 Starting batch processing.
+[2026-03-24T09:43:33.141Z] [INFO] 09:43:32.991 Sensor JavaSensor [java]
+[2026-03-24T09:43:33.141Z] [INFO] 09:43:33.000 Configured Java source version (sonar.java.source): 17
+[2026-03-24T09:43:33.141Z] [INFO] 09:43:33.005 JavaClasspath initialization
+[2026-03-24T09:43:33.141Z] [INFO] 09:43:33.006 JavaClasspath initialization (done) | time=1ms
+[2026-03-24T09:43:33.141Z] [INFO] 09:43:33.007 JavaTestClasspath initialization
+[2026-03-24T09:43:33.141Z] [INFO] 09:43:33.008 JavaTestClasspath initialization (done) | time=1ms
+[2026-03-24T09:43:33.141Z] [INFO] 09:43:33.016 Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+[2026-03-24T09:43:33.141Z] [INFO] 09:43:33.020 Using ECJ batch to parse 1 Main java source files with batch size 207 KB.
+[2026-03-24T09:43:33.374Z] [INFO] 09:43:33.287 The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+[2026-03-24T09:43:33.396Z] [INFO] 09:43:33.147 Starting batch processing.
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.294 The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.477 100% analyzed
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.478 Batch processing: Done.
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.479 Did not optimize analysis for any files, performed a full analysis for all 1 files.
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.480 Using ECJ batch to parse 1 Test java source files with batch size 207 KB.
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.481 Starting batch processing.
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.525 100% analyzed
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.525 Batch processing: Done.
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.526 Did not optimize analysis for any files, performed a full analysis for all 1 files.
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.526 No "Generated" source files to scan.
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.526 Sensor JavaSensor [java] (done) | time=640ms
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.526 Sensor JaCoCo XML Report Importer [jacoco]
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.528 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.528 No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.528 Sensor JaCoCo XML Report Importer [jacoco] (done) | time=2ms
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.528 Sensor CSS Rules [javascript]
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.528 No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.528 Sensor CSS Rules [javascript] (done) | time=0ms
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.528 Sensor C# Project Type Information [csharp]
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.529 Sensor C# Project Type Information [csharp] (done) | time=1ms
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.530 Sensor C# Analysis Log [csharp]
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.543 Sensor C# Analysis Log [csharp] (done) | time=13ms
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.544 Sensor C# Properties [csharp]
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.544 Sensor C# Properties [csharp] (done) | time=0ms
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.544 Sensor SurefireSensor [java]
+[2026-03-24T09:43:33.578Z] [INFO] 09:43:33.545 parsing [/home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-jenkins/target/surefire-reports]
+[2026-03-24T09:43:33.628Z] [INFO] 09:43:33.470 100% analyzed
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.470 Batch processing: Done.
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.471 Did not optimize analysis for any files, performed a full analysis for all 1 files.
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.472 Using ECJ batch to parse 1 Test java source files with batch size 207 KB.
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.474 Starting batch processing.
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.514 100% analyzed
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.514 Batch processing: Done.
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.514 Did not optimize analysis for any files, performed a full analysis for all 1 files.
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.514 No "Generated" source files to scan.
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.515 Sensor JavaSensor [java] (done) | time=656ms
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.515 Sensor JaCoCo XML Report Importer [jacoco]
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.516 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.517 No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.517 Sensor JaCoCo XML Report Importer [jacoco] (done) | time=2ms
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.517 Sensor CSS Rules [javascript]
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.517 No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.517 Sensor CSS Rules [javascript] (done) | time=0ms
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.518 Sensor C# Project Type Information [csharp]
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.518 Sensor C# Project Type Information [csharp] (done) | time=0ms
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.519 Sensor C# Analysis Log [csharp]
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.529 Sensor C# Analysis Log [csharp] (done) | time=11ms
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.530 Sensor C# Properties [csharp]
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.530 Sensor C# Properties [csharp] (done) | time=0ms
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.530 Sensor SurefireSensor [java]
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.531 parsing [/home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-world/target/surefire-reports]
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.577 Sensor SurefireSensor [java] (done) | time=47ms
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.577 Sensor HTML [web]
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.580 Sensor HTML [web] (done) | time=3ms
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.580 Sensor XML Sensor [xml]
+[2026-03-24T09:43:33.629Z] [INFO] 09:43:33.583 1 source file to be analyzed
+[2026-03-24T09:43:33.652Z] [INFO] 09:43:33.437 The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+[2026-03-24T09:43:33.652Z] [INFO] 09:43:33.634 100% analyzed
+[2026-03-24T09:43:33.652Z] [INFO] 09:43:33.635 Batch processing: Done.
+[2026-03-24T09:43:33.652Z] [INFO] 09:43:33.637 Did not optimize analysis for any files, performed a full analysis for all 1 files.
+[2026-03-24T09:43:33.652Z] [INFO] 09:43:33.638 Using ECJ batch to parse 1 Test java source files with batch size 207 KB.
+[2026-03-24T09:43:33.652Z] [INFO] 09:43:33.640 Starting batch processing.
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.591 Sensor SurefireSensor [java] (done) | time=47ms
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.591 Sensor HTML [web]
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.593 Sensor HTML [web] (done) | time=2ms
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.593 Sensor XML Sensor [xml]
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.596 1 source file to be analyzed
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.685 1/1 source file has been analyzed
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.685 Sensor XML Sensor [xml] (done) | time=92ms
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.686 Sensor TextAndSecretsSensor [text]
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.692 3 source files to be analyzed
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.696 3/3 source files have been analyzed
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.696 Sensor TextAndSecretsSensor [text] (done) | time=10ms
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.696 Sensor VB.NET Project Type Information [vbnet]
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.697 Sensor VB.NET Project Type Information [vbnet] (done) | time=1ms
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.697 Sensor VB.NET Analysis Log [vbnet]
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.713 Sensor VB.NET Analysis Log [vbnet] (done) | time=16ms
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.714 Sensor VB.NET Properties [vbnet]
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.714 Sensor VB.NET Properties [vbnet] (done) | time=0ms
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.714 Sensor IaC Docker Sensor [iac]
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.716 0 source files to be analyzed
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.748 0/0 source files have been analyzed
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.748 Sensor IaC Docker Sensor [iac] (done) | time=34ms
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.750 ------------- Run sensors on project
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.780 Sensor Analysis Warnings import [csharp]
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.780 Sensor Analysis Warnings import [csharp] (done) | time=0ms
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.780 Sensor Zero Coverage Sensor
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.784 Sensor Zero Coverage Sensor (done) | time=4ms
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.785 Sensor Java CPD Block Indexer
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.791 Sensor Java CPD Block Indexer (done) | time=6ms
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.797 CPD Executor 1 file had no CPD blocks
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.797 CPD Executor Calculating CPD for 0 files
+[2026-03-24T09:43:33.832Z] [INFO] 09:43:33.797 CPD Executor CPD calculation finished (done) | time=0ms
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.684 1/1 source file has been analyzed
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.685 Sensor XML Sensor [xml] (done) | time=104ms
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.685 Sensor TextAndSecretsSensor [text]
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.691 3 source files to be analyzed
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.695 3/3 source files have been analyzed
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.695 Sensor TextAndSecretsSensor [text] (done) | time=10ms
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.695 Sensor VB.NET Project Type Information [vbnet]
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.696 Sensor VB.NET Project Type Information [vbnet] (done) | time=1ms
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.696 Sensor VB.NET Analysis Log [vbnet]
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.704 Sensor VB.NET Analysis Log [vbnet] (done) | time=8ms
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.704 Sensor VB.NET Properties [vbnet]
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.705 Sensor VB.NET Properties [vbnet] (done) | time=1ms
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.705 Sensor IaC Docker Sensor [iac]
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.707 0 source files to be analyzed
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.742 0/0 source files have been analyzed
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.742 Sensor IaC Docker Sensor [iac] (done) | time=37ms
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.744 ------------- Run sensors on project
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.770 Sensor Analysis Warnings import [csharp]
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.771 Sensor Analysis Warnings import [csharp] (done) | time=1ms
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.771 Sensor Zero Coverage Sensor
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.775 Sensor Zero Coverage Sensor (done) | time=4ms
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.775 Sensor Java CPD Block Indexer
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.781 Sensor Java CPD Block Indexer (done) | time=6ms
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.787 CPD Executor 1 file had no CPD blocks
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.787 CPD Executor Calculating CPD for 0 files
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.788 CPD Executor CPD calculation finished (done) | time=0ms
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.825 Analysis report generated in 35ms, dir size=128.6 kB
+[2026-03-24T09:43:33.883Z] [INFO] 09:43:33.836 Analysis report compressed in 11ms, zip size=19.6 kB
+[2026-03-24T09:43:33.884Z] [INFO] 09:43:33.855 Analysis report uploaded in 19ms
+[2026-03-24T09:43:33.884Z] [INFO] 09:43:33.856 ANALYSIS SUCCESSFUL, you can find the results at: http://host.docker.internal:9000/dashboard?id=codeby-hello-world
+[2026-03-24T09:43:33.884Z] [INFO] 09:43:33.856 Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+[2026-03-24T09:43:33.884Z] [INFO] 09:43:33.856 More about the report processing at http://host.docker.internal:9000/api/ce/task?id=AZ0fOmTYR9A9brUtfMJx
+[2026-03-24T09:43:33.884Z] [INFO] 09:43:33.860 Analysis total time: 3.377 s
+[2026-03-24T09:43:33.884Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:33.884Z] [INFO] BUILD SUCCESS
+[2026-03-24T09:43:33.884Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:33.884Z] [INFO] Total time:  4.407 s
+[2026-03-24T09:43:33.884Z] [INFO] Finished at: 2026-03-24T09:43:33Z
+[2026-03-24T09:43:33.884Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.683 100% analyzed
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.683 Batch processing: Done.
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.683 Did not optimize analysis for any files, performed a full analysis for all 1 files.
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.684 No "Generated" source files to scan.
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.684 Sensor JavaSensor [java] (done) | time=693ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.684 Sensor JaCoCo XML Report Importer [jacoco]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.685 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.686 No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.686 Sensor JaCoCo XML Report Importer [jacoco] (done) | time=2ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.686 Sensor CSS Rules [javascript]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.686 No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.686 Sensor CSS Rules [javascript] (done) | time=0ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.686 Sensor C# Project Type Information [csharp]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.687 Sensor C# Project Type Information [csharp] (done) | time=1ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.687 Sensor C# Analysis Log [csharp]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.700 Sensor C# Analysis Log [csharp] (done) | time=13ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.700 Sensor C# Properties [csharp]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.700 Sensor C# Properties [csharp] (done) | time=0ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.700 Sensor SurefireSensor [java]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.701 parsing [/home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-devops/target/surefire-reports]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.735 Sensor SurefireSensor [java] (done) | time=35ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.735 Sensor HTML [web]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.736 Sensor HTML [web] (done) | time=1ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.736 Sensor XML Sensor [xml]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.739 1 source file to be analyzed
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.824 1/1 source file has been analyzed
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.825 Sensor XML Sensor [xml] (done) | time=89ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.825 Sensor TextAndSecretsSensor [text]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.831 3 source files to be analyzed
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.835 3/3 source files have been analyzed
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.835 Sensor TextAndSecretsSensor [text] (done) | time=10ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.835 Sensor VB.NET Project Type Information [vbnet]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.835 Sensor VB.NET Project Type Information [vbnet] (done) | time=0ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.835 Sensor VB.NET Analysis Log [vbnet]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.843 Sensor VB.NET Analysis Log [vbnet] (done) | time=8ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.843 Sensor VB.NET Properties [vbnet]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.843 Sensor VB.NET Properties [vbnet] (done) | time=0ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.843 Sensor IaC Docker Sensor [iac]
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.845 0 source files to be analyzed
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.889 0/0 source files have been analyzed
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.889 Sensor IaC Docker Sensor [iac] (done) | time=46ms
+[2026-03-24T09:43:33.907Z] [INFO] 09:43:33.891 ------------- Run sensors on project
+[2026-03-24T09:43:34.086Z] [INFO] 09:43:33.846 Analysis report generated in 46ms, dir size=128.7 kB
+[2026-03-24T09:43:34.086Z] [INFO] 09:43:33.865 Analysis report compressed in 19ms, zip size=19.6 kB
+[2026-03-24T09:43:34.086Z] [INFO] 09:43:33.884 Analysis report uploaded in 19ms
+[2026-03-24T09:43:34.086Z] [INFO] 09:43:33.885 ANALYSIS SUCCESSFUL, you can find the results at: http://host.docker.internal:9000/dashboard?id=codeby-hello-jenkins
+[2026-03-24T09:43:34.086Z] [INFO] 09:43:33.885 Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+[2026-03-24T09:43:34.086Z] [INFO] 09:43:33.885 More about the report processing at http://host.docker.internal:9000/api/ce/task?id=AZ0fOmTxR9A9brUtfMJy
+[2026-03-24T09:43:34.086Z] [INFO] 09:43:33.891 Analysis total time: 3.648 s
+[2026-03-24T09:43:34.086Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:34.086Z] [INFO] BUILD SUCCESS
+[2026-03-24T09:43:34.086Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:34.086Z] [INFO] Total time:  4.794 s
+[2026-03-24T09:43:34.086Z] [INFO] Finished at: 2026-03-24T09:43:33Z
+[2026-03-24T09:43:34.086Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.920 Sensor Analysis Warnings import [csharp]
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.920 Sensor Analysis Warnings import [csharp] (done) | time=0ms
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.920 Sensor Zero Coverage Sensor
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.924 Sensor Zero Coverage Sensor (done) | time=4ms
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.924 Sensor Java CPD Block Indexer
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.928 Sensor Java CPD Block Indexer (done) | time=4ms
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.932 CPD Executor 1 file had no CPD blocks
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.932 CPD Executor Calculating CPD for 0 files
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.933 CPD Executor CPD calculation finished (done) | time=0ms
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.964 Analysis report generated in 29ms, dir size=128.6 kB
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.973 Analysis report compressed in 9ms, zip size=19.6 kB
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.988 Analysis report uploaded in 14ms
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.988 ANALYSIS SUCCESSFUL, you can find the results at: http://host.docker.internal:9000/dashboard?id=codeby-hello-devops
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.988 Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.989 More about the report processing at http://host.docker.internal:9000/api/ce/task?id=AZ0fOmVdR9A9brUtfMJz
+[2026-03-24T09:43:34.160Z] [INFO] 09:43:33.992 Analysis total time: 3.497 s
+[2026-03-24T09:43:34.160Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:34.160Z] [INFO] BUILD SUCCESS
+[2026-03-24T09:43:34.160Z] [INFO] ------------------------------------------------------------------------
+[2026-03-24T09:43:34.160Z] [INFO] Total time:  4.498 s
+[2026-03-24T09:43:34.160Z] [INFO] Finished at: 2026-03-24T09:43:33Z
+[2026-03-24T09:43:34.160Z] [INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[2026-03-24T09:43:34.359Z] WARN: Found multiple 'report-task.txt' in the workspace. Taking the first one.
+[2026-03-24T09:43:34.359Z] /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-devops/target/sonar/report-task.txt
+[2026-03-24T09:43:34.359Z] /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-jenkins/target/sonar/report-task.txt
+[2026-03-24T09:43:34.359Z] /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-world/target/sonar/report-task.txt
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Quality Gate)
+[Pipeline] timeout
+[2026-03-24T09:43:34.419Z] Timeout set to expire in 10 min
+[Pipeline] {
+[Pipeline] }
+[Pipeline] waitForQualityGate
+[2026-03-24T09:43:34.439Z] WARN: Found multiple 'report-task.txt' in the workspace. Taking the first one.
+[2026-03-24T09:43:34.439Z] /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-devops/target/sonar/report-task.txt
+[2026-03-24T09:43:34.439Z] /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-jenkins/target/sonar/report-task.txt
+[2026-03-24T09:43:34.439Z] /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-world/target/sonar/report-task.txt
+[2026-03-24T09:43:34.440Z] Checking status of SonarQube task 'AZ0fOmVdR9A9brUtfMJz' on server 'SonarQube'
+[2026-03-24T09:43:34.446Z] SonarQube task 'AZ0fOmVdR9A9brUtfMJz' status is 'PENDING'
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] }
+[2026-03-24T09:43:34.482Z] WARN: Found multiple 'report-task.txt' in the workspace. Taking the first one.
+[2026-03-24T09:43:34.482Z] /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-devops/target/sonar/report-task.txt
+[2026-03-24T09:43:34.482Z] /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-jenkins/target/sonar/report-task.txt
+[2026-03-24T09:43:34.482Z] /home/jenkins/workspace/lesson26-multibranch_lesson27/lesson26/apps/hello-world/target/sonar/report-task.txt
+[Pipeline] // stage
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Quality Gate)
+[Pipeline] stage
+[Pipeline] { (Quality Gate)
+[Pipeline] timeout
+[2026-03-24T09:43:34.561Z] Timeout set to expire in 10 min
+[Pipeline] {
+[Pipeline] timeout
+[2026-03-24T09:43:34.573Z] Timeout set to expire in 10 min
+[Pipeline] {
+[Pipeline] waitForQualityGate
+[2026-03-24T09:43:34.582Z] Checking status of SonarQube task 'AZ0fOmVdR9A9brUtfMJz' on server 'SonarQube'
+[2026-03-24T09:43:34.587Z] SonarQube task 'AZ0fOmVdR9A9brUtfMJz' status is 'PENDING'
+[Pipeline] waitForQualityGate
+[2026-03-24T09:43:34.600Z] Checking status of SonarQube task 'AZ0fOmVdR9A9brUtfMJz' on server 'SonarQube'
+[2026-03-24T09:43:34.606Z] SonarQube task 'AZ0fOmVdR9A9brUtfMJz' status is 'PENDING'
+[2026-03-24T09:43:36.040Z] SonarQube task 'AZ0fOmVdR9A9brUtfMJz' status is 'SUCCESS'
+[2026-03-24T09:43:36.040Z] SonarQube task 'AZ0fOmVdR9A9brUtfMJz' completed. Quality gate is 'ERROR'
+[2026-03-24T09:43:36.043Z] SonarQube task 'AZ0fOmVdR9A9brUtfMJz' status is 'SUCCESS'
+[2026-03-24T09:43:36.043Z] SonarQube task 'AZ0fOmVdR9A9brUtfMJz' completed. Quality gate is 'ERROR'
+[2026-03-24T09:43:36.048Z] SonarQube task 'AZ0fOmVdR9A9brUtfMJz' status is 'SUCCESS'
+[2026-03-24T09:43:36.048Z] SonarQube task 'AZ0fOmVdR9A9brUtfMJz' completed. Quality gate is 'ERROR'
+[Pipeline] }
+[Pipeline] }
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] // stage
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy (run))
+[Pipeline] stage
+[Pipeline] { (Deploy (run))
+[Pipeline] stage
+[Pipeline] { (Deploy (run))
+Stage "Deploy (run)" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+Stage "Deploy (run)" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+Stage "Deploy (run)" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] // stage
+[Pipeline] }
+[2026-03-24T09:43:36.401Z] Failed in branch hello-jenkins
+[Pipeline] }
+[2026-03-24T09:43:36.409Z] Failed in branch hello-devops
+[Pipeline] // stage
+[Pipeline] }
+[2026-03-24T09:43:36.436Z] Failed in branch hello-world
+[Pipeline] // parallel
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] archiveArtifacts
+[2026-03-24T09:43:36.537Z] Archiving artifacts
+[Pipeline] junit
+[2026-03-24T09:43:36.555Z] Recording test results
+[2026-03-24T09:43:36.564Z] [Checks API] No suitable checks publisher found.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: Pipeline aborted due to quality gate failure: ERROR
+Finished: FAILURE
