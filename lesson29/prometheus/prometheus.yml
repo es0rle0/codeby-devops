@@ -1,0 +1,38 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets: ["prometheus:9090"]
+
+  - job_name: cadvisor
+    static_configs:
+      - targets: ["cadvisor:8080"]
+
+  - job_name: blackbox_http
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+          - http://ui:9292/
+          - http://ui:9292/new
+          - http://post:5000/
+          - http://comment:9292/
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox:9115
+
+      - source_labels: [__param_target]
+        regex: http://([^:/]+)(?::[0-9]+)?(/.*)
+        target_label: service
+        replacement: $1
+      - source_labels: [__param_target]
+        regex: http://([^:/]+)(?::[0-9]+)?(/.*)
+        target_label: path
+        replacement: $2
