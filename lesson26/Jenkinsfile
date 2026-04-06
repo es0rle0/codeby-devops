@@ -1,0 +1,79 @@
+pipeline {
+  agent { label 'maven' }
+
+  options {
+    timestamps()
+    parallelsAlwaysFailFast()
+  }
+
+  stages {
+    stage('Checkout') {
+      steps { checkout scm }
+    }
+
+    stage('Build/Test/Deploy (parallel)') {
+      parallel {
+        stage('hello-world') {
+          when {
+            anyOf {
+              changeset "lesson26/apps/hello-world/**"
+              expression { return currentBuild.previousBuild == null }
+            }
+          }
+          stages {
+            stage('Build') { steps { sh 'mvn -B -f lesson26/apps/hello-world/pom.xml clean package' } }
+            stage('Test')  { steps { sh 'mvn -B -f lesson26/apps/hello-world/pom.xml test' } }
+            stage('Deploy (run)') {
+              steps {
+                sh 'java -jar lesson26/apps/hello-world/target/hello-world-1.0.0.jar | tee lesson26/apps/hello-world/deploy.log'
+              }
+            }
+          }
+        }
+
+        stage('hello-jenkins') {
+          when {
+            anyOf {
+              changeset "lesson26/apps/hello-jenkins/**"
+              expression { return currentBuild.previousBuild == null }
+            }
+          }
+          stages {
+            stage('Build') { steps { sh 'mvn -B -f lesson26/apps/hello-jenkins/pom.xml clean package' } }
+            stage('Test')  { steps { sh 'mvn -B -f lesson26/apps/hello-jenkins/pom.xml test' } }
+            stage('Deploy (run)') {
+              steps {
+                sh 'java -jar lesson26/apps/hello-jenkins/target/hello-jenkins-1.0.0.jar | tee lesson26/apps/hello-jenkins/deploy.log'
+              }
+            }
+          }
+        }
+
+        stage('hello-devops') {
+          when {
+            anyOf {
+              changeset "lesson26/apps/hello-devops/**"
+              expression { return currentBuild.previousBuild == null }
+            }
+          }
+          stages {
+            stage('Build') { steps { sh 'mvn -B -f lesson26/apps/hello-devops/pom.xml clean package' } }
+            stage('Test')  { steps { sh 'mvn -B -f lesson26/apps/hello-devops/pom.xml test' } }
+            stage('Deploy (run)') {
+              steps {
+                sh 'java -jar lesson26/apps/hello-devops/target/hello-devops-1.0.0.jar | tee lesson26/apps/hello-devops/deploy.log'
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  post {
+    always {
+      archiveArtifacts allowEmptyArchive: true, artifacts: 'lesson26/apps/**/target/*.jar, lesson26/apps/**/deploy.log'
+      junit allowEmptyResults: true, testResults: 'lesson26/apps/**/target/surefire-reports/*.xml'
+    }
+  }
+}
