@@ -1,0 +1,93 @@
+services:
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: tracing-zipkin
+    ports:
+      - "9411:9411"
+    networks: [reddit]
+    restart: unless-stopped
+
+  ui:
+    image: ghcr.io/codeby-devops/ui:bug
+    container_name: reddit-ui
+    ports:
+      - "9292:9292"
+    environment:
+      - POST_SERVICE_HOST=post
+      - POST_SERVICE_PORT=5000
+      - COMMENT_SERVICE_HOST=comment
+      - COMMENT_SERVICE_PORT=9292
+
+      # Оставляем несколько распространённых переменных для Zipkin.
+      # Лишние будут просто проигнорированы приложением.
+      - ZIPKIN_ENABLED=true
+      - ZIPKIN_HOST=zipkin
+      - ZIPKIN_PORT=9411
+      - ZIPKIN_ADDR=http://zipkin:9411
+      - ZIPKIN_URL=http://zipkin:9411/api/v2/spans
+      - ZIPKIN_ENDPOINT=http://zipkin:9411/api/v2/spans
+    depends_on:
+      - post
+      - comment
+      - zipkin
+    networks: [reddit]
+    restart: unless-stopped
+
+  post:
+    image: ghcr.io/codeby-devops/post:bug
+    container_name: reddit-post
+    environment:
+      - POST_DATABASE_HOST=post_db
+      - POST_DATABASE_PORT=27017
+      - ZIPKIN_ENABLED=true
+      - ZIPKIN_HOST=zipkin
+      - ZIPKIN_PORT=9411
+      - ZIPKIN_ADDR=http://zipkin:9411
+      - ZIPKIN_URL=http://zipkin:9411/api/v2/spans
+      - ZIPKIN_ENDPOINT=http://zipkin:9411/api/v2/spans
+    depends_on:
+      - post_db
+      - zipkin
+    networks: [reddit]
+    restart: unless-stopped
+
+  comment:
+    image: ghcr.io/codeby-devops/comment:bug
+    container_name: reddit-comment
+    environment:
+      - COMMENT_DATABASE_HOST=comment_db
+      - COMMENT_DATABASE_PORT=27017
+      - ZIPKIN_ENABLED=true
+      - ZIPKIN_HOST=zipkin
+      - ZIPKIN_PORT=9411
+      - ZIPKIN_ADDR=http://zipkin:9411
+      - ZIPKIN_URL=http://zipkin:9411/api/v2/spans
+      - ZIPKIN_ENDPOINT=http://zipkin:9411/api/v2/spans
+    depends_on:
+      - comment_db
+      - zipkin
+    networks: [reddit]
+    restart: unless-stopped
+
+  post_db:
+    image: mongo:4.4
+    container_name: reddit-post-db
+    volumes:
+      - post_db:/data/db
+    networks: [reddit]
+    restart: unless-stopped
+
+  comment_db:
+    image: mongo:4.4
+    container_name: reddit-comment-db
+    volumes:
+      - comment_db:/data/db
+    networks: [reddit]
+    restart: unless-stopped
+
+networks:
+  reddit: {}
+
+volumes:
+  post_db: {}
+  comment_db: {}
