@@ -1,0 +1,35 @@
+{
+  "uid": "reddit-app",
+  "title": "Reddit App (Blackbox)",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": { "from": "now-30m", "to": "now" },
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Общее число запросов к ui по путям / и /new (probe count)",
+      "gridPos": { "x": 0, "y": 0, "w": 24, "h": 8 },
+      "targets": [
+        { "refId": "A", "expr": "sum(count_over_time(probe_success{job=\"blackbox_http\", service=\"ui\", path=~\"^/$|^/new$\"}[$__range])) by (path)" }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Трафик: запросов/сек к ui по путям / и /new (probes/sec)",
+      "gridPos": { "x": 0, "y": 8, "w": 24, "h": 8 },
+      "targets": [
+        { "refId": "A", "expr": "sum(count_over_time(probe_success{job=\"blackbox_http\", service=\"ui\", path=~\"^/$|^/new$\"}[5m])) by (path) / 300" }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "90-й процентиль времени ответа (p90) ui по / и /new",
+      "gridPos": { "x": 0, "y": 16, "w": 24, "h": 8 },
+      "targets": [
+        { "refId": "A", "expr": "quantile_over_time(0.9, probe_duration_seconds{job=\"blackbox_http\", service=\"ui\", path=~\"^/$|^/new$\"}[5m])" }
+      ]
+    }
+  ]
+}
